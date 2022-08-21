@@ -2,9 +2,10 @@
 public class Vet {
 	private String nome;
 	private float salario;
-	private Adress adress;
-	private Animal animais[];
-	private int quantidadeAnimais;
+	public Adress adress;
+	public Animal animais[] = new Animal[10];
+	public int quantidadeAnimais;
+	
 	public String getNome() {
 		return nome;
 	}
@@ -35,6 +36,7 @@ public class Vet {
 	public void setQuantidadeAnimais(int quantidadeAnimais) {
 		this.quantidadeAnimais = quantidadeAnimais;
 	}
+	
 	
 	
 }
