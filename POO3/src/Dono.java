@@ -1,7 +1,7 @@
 
 public class Dono {
 	private String nome;
-	private Adress adress;
+	public Adress adress;
 	private String cpf;
 	public String getNome() {
 		return nome;

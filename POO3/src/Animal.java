@@ -1,7 +1,7 @@
 
 public class Animal {
 	private String nome;
-	private Dono dono;
+	public Dono dono;
 	private String especie;
 	private String desc;
 	public String getNome() {
