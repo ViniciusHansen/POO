@@ -1,9 +1,10 @@
 
 public class Animal {
 	private String nome;
-	public Dono dono;
+	private Dono dono;
 	private String especie;
 	private String desc;
+	
 	public String getNome() {
 		return nome;
 	}

@@ -1,8 +1,9 @@
 
 public class Dono {
 	private String nome;
-	public Adress adress;
+	private Adress adress;
 	private String cpf;
+	
 	public String getNome() {
 		return nome;
 	}
