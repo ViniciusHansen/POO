@@ -19,20 +19,31 @@ public class SistemaPetShop {
 	}
 	
 	public void cadastrarVeterinario() {
-		Vet v = new Vet();
-		System.out.println("Nome do Vet: ");
-		v.setNome(scan.next());
-		System.out.println("Salário do Vet: ");
-		v.setSalario(Float.valueOf(scan.next()));
-		if (this.getVets().length < 50) {
-			vets[this.quantidadeVeterinarios] = v;
-			this.quantidadeVeterinarios++;
+		int qtdVets= getQuantidadeVeterinarios();
+		if (qtdVets < 50) {
+			System.out.println("Nome do Vet: ");
+			vets[qtdVets].setNome(scan.next());
+			System.out.println("Salário do Vet: ");
+			vets[qtdVets].setSalario(Float.valueOf(scan.next()));
+			qtdVets++;
+			setQuantidadeVeterinarios(qtdVets);
 		}
+		else {
+			System.out.println("Lista de vets cheia!");
+		}
+		
 	}
 	
 	public void mostrarVeterinarios() {
-		for(int i=0;i<quantidadeVeterinarios;i++) {
-			System.out.printf("Veteninario %i: %s",i,vets[i].getNome());
+		if (quantidadeVeterinarios > 1) {
+			System.out.println("Lista de Veterinários:");
+			for(int i=0;i<quantidadeVeterinarios;i++) {
+				System.out.printf("Veteninario %i: %s",i,vets[i].getNome());
+			}
+		}
+		else {
+			System.out.println("Nenhum Veterinario cadastrado");
+			return;
 		}
 	}
 	
@@ -73,7 +84,13 @@ public class SistemaPetShop {
 	}
 	
 	public int mostrarAnimais() {
-		mostrarVeterinarios();
+		if (quantidadeVeterinarios > 0) {
+			mostrarVeterinarios();
+		}
+		else {
+			System.out.println("Nenhum Veterinario cadastrado");
+			return -999;
+		}
 		System.out.println("Escolha um Veterianáio(pelo indice) para ver os animais que ele cuida:");
 		int i = scan.nextInt();
 		Animal animais[] = new Animal[vets[i].getAnimaisLength()];
@@ -86,6 +103,10 @@ public class SistemaPetShop {
 	
 	public void cadastrarDono() {
 		int a = mostrarAnimais();
+		if (a < 0) {
+			System.out.println("Nenhum animal cadastrado");
+			return;
+		}
 		System.out.println("Escolha um Animal(pelo indice) para cadastrar um dono:");
 		int b = scan.nextInt();
 		Animal animais[] = new Animal[vets[a].getAnimaisLength()];
@@ -100,6 +121,10 @@ public class SistemaPetShop {
 	
 	public void cadastrarEnderecoDono() {
 		int a = mostrarAnimais();
+		if (a < 0) {
+			System.out.println("Nenhum animal cadastrado");
+			return;
+		}
 		System.out.println("Escolha um Animal(pelo indice) para cadastrar um dono:");
 		int b = scan.nextInt();
 		Animal animais[] = new Animal[vets[a].getAnimaisLength()];
