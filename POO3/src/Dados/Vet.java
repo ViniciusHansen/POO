@@ -1,11 +1,23 @@
 package Dados;
 
+
 public class Vet {
 	private String nome;
 	private float salario;
 	private Adress adress;
-	private Animal animais[] = new Animal[10];
+	private Animal animais[];
 	private int quantidadeAnimais;
+	
+	public  Vet(int tamAnimais) {
+		animais = new Animal[tamAnimais]; 
+	}
+	
+	public void cadastrarAnimal(Animal animal) {
+		if (quantidadeAnimais < animais.length) {
+			animais[quantidadeAnimais] = animal;
+			quantidadeAnimais++;
+		}
+	}
 	
 	public String getNome() {
 		return nome;
@@ -41,6 +53,8 @@ public class Vet {
 		this.quantidadeAnimais = quantidadeAnimais;
 	}
 	
-	
+	public String toString() {
+		return "Nome: "+nome+" Salário: "+salario;
+	}
 	
 }

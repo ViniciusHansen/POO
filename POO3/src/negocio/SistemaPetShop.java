@@ -1,19 +1,31 @@
-package Apresentacao;
-import java.util.Scanner;
-
-import Dados.Adress;
-import Dados.Animal;
-import Dados.Dono;
+package negocio;
 import Dados.Vet;
 
 public class SistemaPetShop {
-	Scanner scan = new Scanner(System.in);
-	private Vet vets[] = new Vet[50];
+
+	private Vet vets[];
 	private int quantidadeVeterinarios = 0;
 	
 	public SistemaPetShop(int tamVet) {
 		vets = new Vet[tamVet];
 	}
+	
+	public void cadastrarVeterinario(Vet vet) {
+		if (quantidadeVeterinarios < vets.length) {
+			vets[quantidadeVeterinarios] = vet;
+			quantidadeVeterinarios++;
+		}
+	}
+
+	public Vet[] getVeterinarios() {
+		return vets;
+	}
+
+	public int getQuantVeterinarios() {
+		return quantidadeVeterinarios;
+	}
+}
+	/*
 	public Vet getVet() {
 		return vets[quantidadeVeterinarios];
 	}
@@ -166,3 +178,5 @@ public class SistemaPetShop {
 		
 	}
 }
+
+	*/

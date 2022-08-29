@@ -30,6 +30,9 @@ public class Animal {
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
-	
+	public String toString() {
+		return "Nome: "+nome+" Especie: "+ especie+" Descrição: "+
+					desc;
+	}
 	
 }

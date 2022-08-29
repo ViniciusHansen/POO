@@ -1,6 +1,8 @@
 package Apresentacao;
 import java.util.Scanner;
 import Dados.Vet;
+import dados.Veterinario;
+import negocio.SistemaPetShop;
 
 
 public class Main {
@@ -24,7 +26,7 @@ public class Main {
 		return scan.nextInt();
 	}
 	
-	private String cadastrarVeterinario() {
+	private void cadastrarVeterinario() {
 		Vet veterinario = new Vet(5);
 		System.out.println("Nome do Vet: ");
 		veterinario.setNome(scan.next());
@@ -34,26 +36,26 @@ public class Main {
 	}
 	
 	public void mostrarTodosVeterinarios() {
-		for(int i=0;i<sistema.getQuantidadeVeterinarios();i++) {
-			System.out.println(sistema.getVets()[i]);
+		for(int i=0;i<sistema.getQuantVeterinarios();i++) {
+			Vet vet = sistema.getVeterinarios()[i];
+			System.out.println(vet);
 		}
 	}
 	
 	public static void main(String argv[]) {
-		//SistemaPetShop a = new SistemaPetShop();
 		
 		Main main = new Main();
 		while (true) {
 			int option = main.menu();
 			switch(option) {
 			  case 1:
-				  	main.mostrarVeterinarios();
+				  	main.mostrarTodosVeterinarios();
 				  	break;
 			  case 2:
 				  	a.mostrarAnimais();
 				  	break;
 			  case 3:
-				    a.cadastrarVeterinario();
+				    main.cadastrarVeterinario();
 				    break;
 			  case 4:
 				    a.cadastrarEnderecoVeterinario();
