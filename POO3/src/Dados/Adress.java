@@ -1,3 +1,4 @@
+package Dados;
 
 public class Adress {
 	private String rua;

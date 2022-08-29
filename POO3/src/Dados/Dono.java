@@ -1,3 +1,4 @@
+package Dados;
 
 public class Dono {
 	private String nome;

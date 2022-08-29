@@ -1,3 +1,4 @@
+package Dados;
 
 public class Animal {
 	private String nome;

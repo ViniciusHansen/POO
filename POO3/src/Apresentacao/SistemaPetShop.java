@@ -1,10 +1,22 @@
+package Apresentacao;
 import java.util.Scanner;
+
+import Dados.Adress;
+import Dados.Animal;
+import Dados.Dono;
+import Dados.Vet;
 
 public class SistemaPetShop {
 	Scanner scan = new Scanner(System.in);
 	private Vet vets[] = new Vet[50];
 	private int quantidadeVeterinarios = 0;
 	
+	public SistemaPetShop(int tamVet) {
+		vets = new Vet[tamVet];
+	}
+	public Vet getVet() {
+		return vets[quantidadeVeterinarios];
+	}
 	public Vet[] getVets() {
 		return vets;
 	}
@@ -38,7 +50,7 @@ public class SistemaPetShop {
 		if (quantidadeVeterinarios > 1) {
 			System.out.println("Lista de Veterinários:");
 			for(int i=0;i<quantidadeVeterinarios;i++) {
-				System.out.printf("Veteninario %i: %s",i,vets[i].getNome());
+				System.out.printf("Veterinario %i: %s",i,vets[i].getNome());
 			}
 		}
 		else {

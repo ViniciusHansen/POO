@@ -1,3 +1,4 @@
+package Dados;
 
 public class Vet {
 	private String nome;
