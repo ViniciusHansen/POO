@@ -40,11 +40,17 @@ public class Vet {
 	public Animal[] getAnimais() {
 		return animais;
 	}
+	public Animal getAnimal(int x) {
+		return animais[x];
+	}
 	public int getAnimaisLength() {
 		return animais.length;
 	}
 	public void setAnimais(Animal[] animais) {
 		this.animais = animais;
+	}
+	public void setAnimal(Animal animal, int x) {
+		this.animais[x]=animal;
 	}
 	public int getQuantidadeAnimais() {
 		return quantidadeAnimais;

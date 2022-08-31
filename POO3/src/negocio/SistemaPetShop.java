@@ -20,6 +20,10 @@ public class SistemaPetShop {
 	public Vet[] getVeterinarios() {
 		return vets;
 	}
+	
+	public void setVeterinario(Vet vet, int x) {
+		vets[x] = vet;
+	}
 
 	public int getQuantVeterinarios() {
 		return quantidadeVeterinarios;

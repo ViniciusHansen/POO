@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 import Dados.Adress;
 import Dados.Animal;
+import Dados.Dono;
 import Dados.Vet;
 import negocio.SistemaPetShop;
 
@@ -25,7 +26,7 @@ public class Main {
 				+ "6) cadastrar dono do animal\n"
 				+ "7) cadastrar endereço do dono\n"
 				+ "0) sair");
-		return scan.nextInt();
+		return Integer.valueOf(scan.nextLine());
 	}
 	
 	private void cadastrarVeterinario() {
@@ -73,6 +74,7 @@ public class Main {
 		System.out.println("cep:");
 		temp.setCep(scan.next());
 		vet.setAdress(temp);
+		sistema.setVeterinario(vet, i);
 	}
 	
 	private void cadastrarAnimal() {
@@ -83,16 +85,32 @@ public class Main {
 		Vet vet = sistema.getVeterinarios()[i];
 		if(vet.getQuantidadeAnimais() < 10) {
 			System.out.println("nome:");
-			Animal temp[] = new Animal[vet.getAnimaisLength()];
-			temp[vet.getQuantidadeAnimais()].setNome(scan.next());
+			Animal temp = new Animal();
+			temp.setNome(scan.next());
 			System.out.println("espécie:");
-			temp[vet.getQuantidadeAnimais()].setEspecie(scan.next());
+			temp.setEspecie(scan.next());
 			System.out.println("descrição:");
-			temp[vet.getQuantidadeAnimais()].setDesc(scan.next());
-			vet.setAnimais(temp);
+			temp.setDesc(scan.next());
+			vet.setAnimal(temp, i);
 		}
 	}
 	
+	private void cadastrarDono() {
+		int a = mostrarAnimais();
+		System.out.println("Escolha um Animal(pelo indice) para cadastrar um dono:");
+		int b = scan.nextInt();
+		Vet vet = new Vet(5);
+		Animal animal = vet.getAnimal(b);
+		Dono temp = animal.getDono();
+		System.out.println("Nome do dono:");
+		temp.setNome(scan.next());
+		System.out.println("CPF do dono:");
+		temp.setCpf(scan.next());
+		animal.setDono(temp);
+		vet.cadastrarAnimal(animal);
+		sistema.setVeterinario(vet, b);
+		
+	}
 	
 	
 	public static void main(String argv[]) {
@@ -120,10 +138,9 @@ public class Main {
 				    main.cadastrarDono();
 				    break;
 			  case 7:
-				    main.cadastrarEnderecoDono();
+				    //main.cadastrarEnderecoDono();
 				    break;
 			  case 0:
-				    scan.close();
 				    System.exit(0);
 			  default:
 			    System.out.println("opção inválida");
