@@ -8,7 +8,7 @@ public class Vet {
 	private Animal animais[];
 	private int quantidadeAnimais;
 	
-	public  Vet(int tamAnimais) {
+	public Vet(int tamAnimais) {
 		animais = new Animal[tamAnimais]; 
 	}
 	
