@@ -62,11 +62,7 @@ public class Imobiliaria {
 	}
 	
 	public String toString() {
-		String imoveisStr[] = new String[quantImoveis];
-		for(int i=0;i<quantImoveis;i++) {
-			imoveisStr[i] = imoveis[i].toString();
-		}
-		return "Imobiliaria [nome=" + nome + ", imoveis=" + Arrays.toString(imoveisStr) + "]";
+		return "Imobiliaria [nome=" + nome + ", imoveis=" + Arrays.toString(imoveis) + "]";
 	}
 	
 	
