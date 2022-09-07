@@ -8,7 +8,7 @@ public class Sorteador {
 	Random r = new Random();
 	
 	public Pessoa sortearProximo() {
-		int escolhido = r.nextInt(10-1)+1;
+		int escolhido = r.nextInt(9);
 		Pessoa pessoaEscolhida = pessoas.get(escolhido);
 		pessoas.remove(escolhido);
 		return pessoaEscolhida;
