@@ -1,4 +1,4 @@
-package pooLista1;
+package classes;
 
 public class Revenda {
 	private String nome;
