@@ -7,16 +7,17 @@ public class Imobiliaria {
 	private Imovel imoveis[];
 	private int quantImoveis;
 	
+	
+	public Imobiliaria(int quantImoveis) {
+		imoveis = new Imovel[quantImoveis];
+	}
+
 	public int getQuantImoveis() {
 		return quantImoveis;
 	}
 
 	public void setQuantImoveis(int quantImoveis) {
 		this.quantImoveis = quantImoveis;
-	}
-
-	public Imobiliaria(int quantImoveis) {
-		imoveis = new Imovel[quantImoveis];
 	}
 
 	public String getNome() {
@@ -35,7 +36,12 @@ public class Imobiliaria {
 		this.imoveis = imoveis;
 	}
 
-	Imovel[] filtrarPorArea(float x) {
+	public void adicionaImovel(Imovel imovel) {
+		quantImoveis++;
+		imoveis[quantImoveis] = imovel;
+	}
+	
+	public Imovel[] filtrarPorArea(float x) {
 		Imovel[] imoveis = this.getImoveis();
 		Imovel[] imoveisMaiores = new Imovel[quantImoveis];
 		int count=0;
