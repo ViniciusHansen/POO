@@ -9,6 +9,24 @@ public class Viveiro {
 	protected ArrayList<Animal> animais;
 	
 	
+	public void setComprimento(float comprimento) {
+		this.comprimento = comprimento;
+	}
+
+	public void setLargura(float largura) {
+		this.largura = largura;
+	}
+
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String toString() {
+		return "Viveiro [nome=" + nome + ", comprimento=" + comprimento + ", largura=" + largura + ", animais="
+				+ animais + "]";
+	}
+
 	public float calculaEspaco() {
 		return this.comprimento * this.largura;
 	}

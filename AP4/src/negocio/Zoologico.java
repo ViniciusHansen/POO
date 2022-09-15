@@ -7,13 +7,18 @@ import dados.Aquario;
 import dados.Viveiro;
 
 public class Zoologico {
-	private ArrayList<Viveiro> viveiros;
-	private ArrayList<Animal> animais;
+	private ArrayList<Viveiro> viveiros = new ArrayList<Viveiro>();
+	private ArrayList<Animal> animais = new ArrayList<Animal>();
 	
 	public void cadastrarViveiro(Viveiro viveiro) {
 		viveiros.add(viveiro);
 	}
 	
+	
+	public String toString() {
+		return "Zoologico [viveiros=" + viveiros + "]";
+	}
+
 	public void cadastrarAnimais(Animal animal) {
 		animais.add(animal);
 	}
@@ -36,6 +41,7 @@ public class Zoologico {
 	public ArrayList<Viveiro> getSoViveiros(){
 		return viveiros;
 	}
+	
 	
 	
 }
