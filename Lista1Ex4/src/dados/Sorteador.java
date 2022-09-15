@@ -8,27 +8,14 @@ public class Sorteador {
 	Random r = new Random();
 	
 	public Pessoa sortearProximo() {
-		int escolhido = r.nextInt(9);
+		int escolhido = r.nextInt(pessoas.size()-1);
 		Pessoa pessoaEscolhida = pessoas.get(escolhido);
 		pessoas.remove(escolhido);
 		return pessoaEscolhida;
 	}
 
-	public ArrayList<Pessoa> getPessoas() {
-		return pessoas;
-	}
-
-	public void setPessoas(ArrayList<Pessoa> pessoas) {
-		this.pessoas = pessoas;
-	}
-
-	public Random getR() {
-		return r;
-	}
-
-	public void setR(Random r) {
-		this.r = r;
-	}
-	
+	public void addPessoa(Pessoa pessoa) {
+		this.pessoas.add(pessoa) ;
+	}	
 	
 }

@@ -2,7 +2,6 @@ package pkg;
 
 import java.util.Random;
 
-import apresentacao.Veiculo;
 
 public class Fabrica {
 	
@@ -15,8 +14,9 @@ public class Fabrica {
 	
 	
 	public Veiculo fabricar() {
-		int classe = getRandomNumber(0, 1);
-		if(classe == 0) {
+	    Random random = new Random();
+		boolean car = random.nextBoolean();
+		if(car == true) {
 			Carro carro = new Carro();
 			carro.setNumeroPortas(getRandomNumber(2, 4));
 			int tipoCombustivel= getRandomNumber(0, 3);
@@ -35,12 +35,12 @@ public class Fabrica {
 		}
 		
 	}
-	public class Main {
-		public void main(String[] args) {
-			Fabrica f = new Fabrica();
-			while(true) {
-				Veiculo veiculo = f.fabricar();
-				System.out.println(veiculo.info());
-			}
+	
+	public static void main(String[] args) {
+		Fabrica f = new Fabrica();
+		while(true) {
+			Veiculo veiculo = f.fabricar();
+			System.out.println(veiculo.info());
 		}
+	}
 }
