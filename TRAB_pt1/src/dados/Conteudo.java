@@ -4,7 +4,7 @@ import java.util.List;
 
 public abstract class Conteudo {
 	private int id, ano;
-	private String titulo, genero;
+	private String titulo, genero, descricao;
 	private List<Ator> elencoPrincipal, elencoSecundario;
 	public int getId() {
 		return id;
@@ -42,9 +42,16 @@ public abstract class Conteudo {
 	public void addToElencoSecundario(Ator ator) {
 		elencoSecundario.add(ator);
 	}
-	public String toString() {
-		return "Conteudo [id=" + id + ", ano=" + ano + ", titulo=" + titulo + ", genero=" + genero
-				+ ", elencoPrincipal=" + elencoPrincipal + ", elencoSecundario=" + elencoSecundario + "]";
+	public String getDescricao() {
+		return descricao;
 	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	public String toString() {
+		return "Conteudo [id=" + id + ", ano=" + ano + ", titulo=" + titulo + ", genero=" + genero + ", descricao="
+				+ descricao + ", elencoPrincipal=" + elencoPrincipal + ", elencoSecundario=" + elencoSecundario + "]";
+	}
+
 	
 }

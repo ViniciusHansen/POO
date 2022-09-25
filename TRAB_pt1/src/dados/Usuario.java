@@ -1,8 +1,45 @@
 package dados;
 
+import java.util.List;
+
 public class Usuario {
 	private int id;
 	private String dataNascimento, nome, senha;
+	private List<Filme> filmes;
+	private List<Serie> series;
+	
+	public void cadastrarFilme(Filme filme) {
+		filmes.add(filme);
+	}
+	
+	public boolean removerFilme(Filme filme) {
+		int antes = filmes.size();
+		filmes.remove(filme);
+		if(antes == filmes.size())
+			return false;
+		return true;
+	}
+	
+	public void cadastrarSerie(Serie serie) {
+		series.add(serie);
+	}
+	
+	public boolean removerSerie(Serie serie) {
+		int antes = series.size();
+		series.remove(serie);
+		if(antes == series.size())
+			return false;
+		return true;
+	}
+	
+	public List<Filme> getFilmes() {
+		return filmes;
+	}
+	
+	public List<Serie> getSeries() {
+		return series;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -28,8 +65,9 @@ public class Usuario {
 		this.senha = senha;
 	}
 	public String toString() {
-		return "Usuario [id=" + id + ", dataNascimento=" + dataNascimento + ", nome=" + nome + ", senha=" + senha + "]";
+		return "Usuario [id=" + id + ", dataNascimento=" + dataNascimento + ", nome=" + nome + ", senha=" + senha
+				+ ", filmes=" + filmes + ", series=" + series + "]";
 	}
-	
+
 	
 }
