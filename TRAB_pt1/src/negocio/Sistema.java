@@ -1,5 +1,11 @@
 package negocio;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import dados.Conteudo;
 import dados.Episodio;
 import dados.Filme;
@@ -46,15 +52,22 @@ public class Sistema {
 		return s.removerEpisodio(ep);
 	}
 	
-	public String exibirPorCategoria() {
-		//to-do
+	public Collection<String> exibirPorCategoria() {
+		Map<Conteudo, String> cats = new HashMap<Conteudo, String>();
+		
+		for(Filme f : user.getFilmes())
+			cats.put(f, f.getGenero());
+		for(Serie s : user.getSeries())
+			cats.put(s, s.getGenero());
+		return cats.values();
+			
 	}
 	
 	public String exibirDescricao(Conteudo c) {
 		return c.getDescricao();
 	}
 	
-	public String xRay() {
-		//to-do
+	public String xRay(Conteudo c) {
+		return c.toString();
 	}
 }

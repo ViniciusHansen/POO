@@ -36,8 +36,16 @@ public class Usuario {
 		return filmes;
 	}
 	
+	public Filme getFilme(int x) {
+		return filmes.get(x);
+	}
+	
 	public List<Serie> getSeries() {
 		return series;
+	}
+	
+	public Serie getSerie(int x){
+		return series.get(x);
 	}
 	
 	public int getId() {
