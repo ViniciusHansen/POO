@@ -1,33 +1,27 @@
 package negocio;
 
 import java.util.List;
-import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 
 import dados.Contato;
 
 public class ListaTelefonica {
-	private List<Contato> contatos = new ArrayList<Contato>();
+	private Map<Character, List<Contato>> contatos = new HashMap<Character, List<Contato>>();
 	
 	public void adicionarContato(Contato c) {
-		contatos.add(c);
+        contatos.get(c.getNome().toUpperCase().charAt(0)).add(c);
 	}
 	
 	public void removerContato(Contato c) {
-		contatos.remove(c);
+		contatos.get(c.getNome().toUpperCase().charAt(0)).remove(c);
 	}
 	
-	public List<Contato> buscarContato(char letra){
-		List<Contato> cs = new ArrayList<Contato>();
-		for(Contato c : contatos)
-			if(c.getNome().charAt(0) == letra)
-				cs.add(c);
-		return cs;
+	public List<Contato> buscarContatos(char letra){
+		return contatos.get(letra);
 	}
 	
-	public Map<Character,List<Contato>> buscarContato(){
-		Map<Character,List<Contato>> cs = new HashMap<Character,List<Contato>>();
-		for(Contato c : contatos)
+	public Map<Character,List<Contato>> buscarContatos(){
+		return contatos;
 	}
 }
