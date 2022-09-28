@@ -13,16 +13,6 @@ import dados.Usuario;
 public class Sistema {
 	private Usuario user =new Usuario();
 
-	/*+ cadastrarFilme(Filme): boolean
-	+ cadastrarSerie(Serie): boolean
-	+ cadastrarEp(Episodio): boolean
-	+ deletarFilme(Filme): boolean
-	+ deletarSerie(Serie): boolean
-	+ deletarEp(Episodio): boolean
-	+ exibirPorCategoria(): String
-	+ exibirDescricao(Conteudo): String
-	+ xRay(): String*/
-
 	public boolean cadastrarFilme(Filme f) {
 		user.cadastrarFilme(f);
 		return true;
@@ -68,4 +58,5 @@ public class Sistema {
 	public String xRay(Conteudo c) {
 		return c.toString();
 	}
+	
 }
