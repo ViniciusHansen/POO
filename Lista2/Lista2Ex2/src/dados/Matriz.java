@@ -7,6 +7,18 @@ public class Matriz<T> {
     private int linhas, colunas;
     private List<List<T>> matriz;
 
+    public List<List<T>> getMatriz() {
+        return matriz;
+    }
+
+    public int getLinhas() {
+        return linhas;
+    }
+
+    public int getColunas() {
+        return colunas;
+    }
+
     public Matriz(int linhas, int colunas){
         int i=0, j=0;
         this.linhas=linhas;
