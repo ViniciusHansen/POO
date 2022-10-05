@@ -27,7 +27,7 @@ public class Matriz<T> {
         for(i=0;i<linhas;i++)
             matriz.add(new ArrayList<T>());
             for (j=0;j<colunas;j++)
-                matriz.get(i).add(null);
+                matriz.get(j).add(null);
     }
     public boolean set(T objeto, int i, int j){
         if(this.linhas>=i || this.colunas>=j)
@@ -61,22 +61,27 @@ public class Matriz<T> {
             c = (colunas / 2) + 1;
         }
         List<T> listaQuadrante = new ArrayList<T>();
+        int i=0,j=0;
         switch (quadrante){
             case PRIMEIRO:
-                for(int i=0;i<c;i++)
-                    listaQuadrante.addAll(l,getLinha(i));
+                for(i=0;i<l;i++)
+                    for(j=0;j<c;j++)
+                        listaQuadrante.add(matriz.get(i).get(j));
                 break;
             case SEGUNDO:
-                for(int i=l;i<linhas;i++)
-                    listaQuadrante.addAll(colunas-c,getLinha(i));
+                for(i=l;i<linhas;i++)
+                    for(j=0;j<c;j++)
+                        listaQuadrante.add(matriz.get(i).get(j));
                 break;
             case TERCEIRO:
-                for(int i=0;i<l;i++)
-                    listaQuadrante.addAll(c, getColuna(i));
+                for(i=0;i<l;i++)
+                    for(j=c;j<colunas;j++)
+                        listaQuadrante.add(matriz.get(i).get(j));
                 break;
             case QUARTO:
-                for(int i=c;i<colunas;i++)
-                    listaQuadrante.addAll(linhas - l,getColuna(i));
+                for(i=l;i<linhas;i++)
+                    for(j=c;j<colunas;j++)
+                        listaQuadrante.add(matriz.get(i).get(j));
                 break;
         }
         return listaQuadrante;

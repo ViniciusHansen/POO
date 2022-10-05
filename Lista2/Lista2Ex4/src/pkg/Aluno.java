@@ -8,7 +8,10 @@ public class Aluno {
     private double notas[5];
 
     public double calcularMedia(){
-
+        double somaNotas = 0.0;
+        for(double i : notas)
+            somaNotas+=i;
+        return somaNotas/=5;
     }
 
     @Override
