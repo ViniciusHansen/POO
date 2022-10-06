@@ -1,6 +1,7 @@
 package negocio;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,7 +10,6 @@ import dados.Pessoa;
 
 public class Sistema {
 	private Map<Integer,List<Pessoa>> p = new HashMap<Integer,List<Pessoa>>();
-	
 
 	public Map<Integer, List<Pessoa>> getPessoas() {
 		return p;
@@ -21,7 +21,11 @@ public class Sistema {
 			p.put(i, ps);
 		}
 	}
-	
+	public void sortPessoas(){
+		for(int i=1;i<=5;i++){
+			Collections.sort(p.get(i));
+		}
+	}
 	public void addPessoa(Pessoa pessoa) {
 		int i = pessoa.getIdade();
 		if(i>=1 && i<=12) {
