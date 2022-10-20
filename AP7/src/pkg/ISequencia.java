@@ -1,4 +1,4 @@
-package dados;
+package pkg;
 
 public interface ISequencia {
     public int sortear();
