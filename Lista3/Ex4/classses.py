@@ -6,29 +6,33 @@ class Pessoa(ABC):
         nome = str
 
     @abstractmethod
-    def __repr__ (self):
+    def __repr__(self):
         pass
 
 
 class Aluno(Pessoa):
-    def __init__(self):
-        notas = []
+    notas = []
 
-    def calcularMedia():
-        sum=0
-        for i in Aluno.notas:
-            sum+=i
-        return sum/notas.length()
+    def __init__(self, notas):
+        super().__init__()
+        self.notas = notas
+
+    def calcularMedia(self):
+        s = 0
+        for i in self.notas:
+            s += i
+        return s / len(self.notas)
+
     def __repr__(self):
-        if (Aluno.calcularMedia()) > 7:
-            return "Aluno: {}, Notas: {}, Situação: APROVADO".format(self.nome,self.notas)
+        if (Aluno.calcularMedia(self)) > 7:
+            return "Aluno: {}, Notas: {}, Média: {}, Situação: APROVADO".format(self.nome, self.notas, self.calcularMedia())
         else:
-            return "Aluno: {}, Notas: {}, Situação: REPROVADO".format(self.nome,self.notas)
+            return "Aluno: {}, Notas: {}, Média: {}, Situação: REPROVADO".format(self.nome, self.notas, self.calcularMedia())
 
 
 class Professor(Pessoa):
     def __init__(self):
         salario = []
+
     def __repr__(self):
         return "Nome: {}, Salario: {}".format(self.nome, self.salario)
-

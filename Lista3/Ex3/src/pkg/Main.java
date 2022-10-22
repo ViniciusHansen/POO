@@ -16,7 +16,7 @@ public class Main {
         dg.adicionarAresta(0,1);
         dg.adicionarAresta(1,3);
         dg.adicionarAresta(2,0);
-
+        System.out.println("Dígrafo:");
         System.out.println(dg.toString());
 
         g.adicionarVertice();
@@ -28,6 +28,7 @@ public class Main {
         g.adicionarAresta(0,1);
         g.adicionarAresta(1,3);
         g.adicionarAresta(2,0);
+        System.out.println("Grafo:");
         System.out.println(g.toString());
     }
 }
