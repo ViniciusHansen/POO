@@ -10,20 +10,27 @@ public class Digrafo {
 
     public void adicionarVertice(){
         int index = ma2.size();
-        for(Map.Entry<Integer,List<Integer>> entrada : ma2.entrySet()){
-            List<Integer> ls=entrada.getValue();
-            ls.add(0);
-            entrada.setValue(ls);
+        for(Integer key : ma2.keySet()) {
+            ma2.get(key).add(0);
         }
         List<Integer> l = new ArrayList<>();
         for(int i=0;i<index;i++)
             l.add(0);
+        l.add(0);
         ma2.put(index,l);
     }
+
+    public Map<Integer, List<Integer>> getMa2() {
+        return ma2;
+    }
+
     public void adicionarAresta(int i, int j){
         ma2.get(i).set(j,1);
     }
-    //public String toString(){
-    //    return "";
-    //}
+    public String toString(){
+        String m = new String();
+        for(List<Integer> lista : ma2.values())
+            m+= lista.toString()+"\n";
+        return m;
+    }
 }
