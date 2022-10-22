@@ -31,8 +31,11 @@ class Aluno(Pessoa):
 
 
 class Professor(Pessoa):
-    def __init__(self):
-        salario = []
+    salario = []
+
+    def __init__(self, salario):
+        super().__init__()
+        self.salario = salario
 
     def __repr__(self):
         return "Nome: {}, Salario: {}".format(self.nome, self.salario)

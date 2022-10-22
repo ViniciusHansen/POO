@@ -1,9 +1,13 @@
 from classses import *
 
-prof1 = Professor()
+prof1 = Professor(2000)
 prof1.nome = "Fabio"
-prof2 = Professor()
+prof2 = Professor(2400)
 prof2.nome = "Alberto"
+
+print("Professores:")
+print(prof1)
+print(prof2)
 
 a1notas = [7, 3, 9, 4, 6]
 a1 = Aluno(a1notas)
@@ -25,8 +29,10 @@ a5notas = [9, 9, 9, 9, 9]
 a5 = Aluno(a5notas)
 a5.nome = "Laura"
 
+print("Alunos:")
 print(a1)
 print(a2)
 print(a3)
 print(a4)
 print(a5)
+
