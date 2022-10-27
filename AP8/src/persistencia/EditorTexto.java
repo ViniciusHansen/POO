@@ -41,4 +41,15 @@ public class EditorTexto {
             System.exit(0);
         }
     }
+     public void gravaTexto(String caminho, String linha) {
+        FileWriter arq;
+        try {
+            arq = new FileWriter(caminho);
+            arq.write(linha + "\n");
+            arq.close();
+        } catch (Exception e) {
+            System.err.println("Erro arq");
+            System.exit(0);
+        }
+    }
 }
