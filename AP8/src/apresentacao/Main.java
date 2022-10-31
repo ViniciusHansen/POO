@@ -28,7 +28,7 @@ public class Main {
 		System.out.println(lt.buscarContatos(inicial));
 		System.out.println("digite o numero da pessoa removida (1,2,3,...)");
 		int escolha = Integer.valueOf(s.next());
-		lt.removerContato(lt.getContatos().get(inicial).get(escolha-1));
+		lt.removerContato(lt.buscarContatos(inicial).get(escolha));
 	}
 	
 	

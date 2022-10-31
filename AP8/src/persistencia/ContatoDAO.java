@@ -1,10 +1,7 @@
 package persistencia;
 
 import dados.Contato;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ContatoDAO {
     private ArquivoContatoDAO ac = new ArquivoContatoDAO();
@@ -18,6 +15,16 @@ public class ContatoDAO {
         ac.salvaContatos(cs);
     }
     public Map<Character, List<Contato>> getALL(){
+       Map<Character,List<Contato>> c = new HashMap<Character,List<Contato>>();
+            for (char i = 65; i < 91; i++) {
+                List<Contato> l = new LinkedList<Contato>();
+                c.put(i, l);
+            }
+            for (Contato contato : ac.leContatos()) {
+                char inicial = contato.getNome().toUpperCase().charAt(0);
+                c.get(inicial).add(contato);
+        }
 
+        return c;
     }
 }

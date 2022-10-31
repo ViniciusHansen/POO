@@ -6,39 +6,33 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 import dados.Contato;
+import persistencia.ContatoDAO;
 
 public class ListaTelefonica {
-	private Map<Character, List<Contato>> contatos = new HashMap<Character, List<Contato>>();
-	
-	 public ListaTelefonica() {
-		 for (char i = 65; i < 91; i++) {
-			 List<Contato> lista = new LinkedList<Contato>();
-	         contatos.put(i, lista);
-		 }
-	 }
-	
-	public void adicionarContato(Contato c) {	
-		contatos.get(c.getNome().toUpperCase().charAt(0)).add(c);
+	private ContatoDAO contatos = new ContatoDAO();
+
+	public void adicionarContato(Contato c) {
+		contatos.insert(c);
 	}
 	
 	public void removerContato(Contato c) {
-		contatos.get(c.getNome().toUpperCase().charAt(0)).remove(c);
+		contatos.delete(c);
 	}
 	
-	public Map<Character, List<Contato>> getContatos() {
+	public ContatoDAO getContatos() {
 		return contatos;
 	}
 
-	public void setContatos(Map<Character, List<Contato>> contatos) {
+	public void setContatos(ContatoDAO contatos) {
 		this.contatos = contatos;
 	}
 
 	public List<Contato> buscarContatos(char letra){
-		return contatos.get(letra);
+		return contatos.getALL().get(letra);
 	}
 	
 	public Map<Character,List<Contato>> buscarContatos(){
-		return contatos;
+		return contatos.getALL();
 	}
 	
 	

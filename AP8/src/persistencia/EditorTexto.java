@@ -37,7 +37,7 @@ public class EditorTexto {
             arq.close();
 
         } catch (Exception e) {
-            System.out.println("Erro arq");
+            System.out.println("Erro arq (gravação)");
             System.exit(0);
         }
     }
@@ -48,7 +48,7 @@ public class EditorTexto {
             arq.write(linha + "\n");
             arq.close();
         } catch (Exception e) {
-            System.err.println("Erro arq");
+            System.err.println("Erro arq (leitura)");
             System.exit(0);
         }
     }
