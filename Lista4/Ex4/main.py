@@ -2,7 +2,8 @@ class Ponto2d:
     def __init__(self,x,y) -> None:
         self.x = int(x)
         self.y = int(y)
-
+    def __str__(self) -> str:
+        return "({},{})".format(self.x,self.y)
 
 class Reta:
     def __init__(self,a,b) -> None:
@@ -14,6 +15,11 @@ class Reta:
 
     def estaNaReta(self, ponto) -> bool:
         return ponto.y == self.a * ponto.x + self.b
+    
+    def __str__(self) -> str:
+        if self.b < 0:
+            return "y = {}x - {}".format(self.a,abs(self.b))
+        return "y = {}x + {}".format(self.a,self.b)
 
 
 class EspacoGeometrico:
@@ -25,17 +31,17 @@ class EspacoGeometrico:
         for r in self.retas:
             if reta.intercepta(r):
                 raise ObjetoSobrepostoException(
-                    "A reta intercepta uma reta existente")
-            else:
-                self.retas.append(reta)
+                    "A reta {} intercepta a reta {} já existente".format(reta,r))
+        else:
+            self.retas.append(reta)
 
     def addPonto(self, ponto: Ponto2d) -> None:
         for r in self.retas:
             if r.estaNaReta(ponto):
                 raise ObjetoSobrepostoException(
-                    "O ponto pertence a uma reta ja adicionada")
-            else:
-                self.pontos.append(ponto)
+                    "O ponto {} pertence a reta {} já adicionada".format(ponto, r))
+        else:
+            self.pontos.append(ponto)
 
 
 class ObjetoSobrepostoException(Exception):
@@ -48,21 +54,20 @@ class ObjetoSobrepostoException(Exception):
 
 
 def main():
-    # y == a * x + b
     red = Reta(1,2)
     green = Reta(1,1)
     blue = Reta(2,-2)
 
     a = Ponto2d(3,4)
     b = Ponto2d(2,3)
-    c = Ponto2d(3,6)
+    c = Ponto2d(4,6)
     d = Ponto2d(3,2)
 
     try:
         space = EspacoGeometrico()
         space.addReta(red)
         space.addReta(green)
-        space.addReta(blue)
+        #space.addReta(blue)
         space.addPonto(a)
         space.addPonto(b)
         space.addPonto(c)
