@@ -9,10 +9,10 @@ class Reta:
         self.a = int(a)
         self.b = int(b)
 
-    def intercepta(self, reta):
+    def intercepta(self, reta) -> bool:
         return not (self.a == reta.a and self.b != reta.b)
 
-    def estaNaReta(self, ponto):
+    def estaNaReta(self, ponto) -> bool:
         return ponto.y == self.a * ponto.x + self.b
 
 
@@ -21,7 +21,7 @@ class EspacoGeometrico:
         self.retas = []
         self.pontos = []
 
-    def addReta(self, reta: Reta):
+    def addReta(self, reta: Reta) -> None:
         for r in self.retas:
             if reta.intercepta(r):
                 raise ObjetoSobrepostoException(
@@ -29,7 +29,7 @@ class EspacoGeometrico:
             else:
                 self.retas.append(reta)
 
-    def addPonto(self, ponto: Ponto2d):
+    def addPonto(self, ponto: Ponto2d) -> None:
         for r in self.retas:
             if r.estaNaReta(ponto):
                 raise ObjetoSobrepostoException(
