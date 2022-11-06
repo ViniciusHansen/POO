@@ -67,7 +67,7 @@ def main():
         space = EspacoGeometrico()
         space.addReta(red)
         space.addReta(green)
-        #space.addReta(blue)
+        space.addReta(blue)
         space.addPonto(a)
         space.addPonto(b)
         space.addPonto(c)
