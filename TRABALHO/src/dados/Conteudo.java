@@ -6,6 +6,13 @@ public abstract class Conteudo {
 	private int id, ano;
 	private String titulo, genero, descricao;
 	private List<Ator> elencoPrincipal, elencoSecundario;
+	public Conteudo(String t, String gen, String desc, int a){
+		this.titulo = t;
+		this.descricao = desc;
+		this.ano = a;
+		this.genero = gen;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -48,6 +55,7 @@ public abstract class Conteudo {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+
 	public String toString() {
 		return "Conteudo [id=" + id + ", ano=" + ano + ", titulo=" + titulo + ", genero=" + genero + ", descricao="
 				+ descricao + ", elencoPrincipal=" + elencoPrincipal + ", elencoSecundario=" + elencoSecundario + "]";

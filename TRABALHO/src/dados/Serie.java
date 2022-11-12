@@ -4,6 +4,12 @@ import java.util.List;
 
 public class Serie extends Conteudo{
 	private List<Episodio> episodios;
+	private int temporada;
+
+	public Serie(String t, String gen, String desc, int a, int tempo) {
+		super(t, gen, desc, a);
+		this.temporada = tempo;
+	}
 
 	public List<Episodio> getEpisodios() {
 		return episodios;

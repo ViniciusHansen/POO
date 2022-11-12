@@ -59,7 +59,7 @@ public class Login extends JFrame{
                 Usuario user = sist.loginUsuario(login,senha);
                 if(user != null){
                     loginSucesso.setVisible(true);
-                    telaPrincipal telaMain = new telaPrincipal(user);
+                    TelaPrincipal telaMain = new TelaPrincipal(sist, user);
                     dispose();
                 }else{
                     erroLogin.setVisible(true);

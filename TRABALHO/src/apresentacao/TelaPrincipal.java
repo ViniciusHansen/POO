@@ -5,23 +5,34 @@ import javax.swing.*;
 import dados.Usuario;
 import negocio.Sistema;
 
-import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class telaPrincipal extends JFrame{
+public class TelaPrincipal extends JFrame{
     private JPanel telaPrincipal;
-    private JButton adicionarMídiaButton;
-    private Usuario user = new Usuario();
+    private JButton addMediaButton;
+    protected Sistema sist;
+    protected Usuario user;
 
-    public telaPrincipal(Usuario user_login){
+    public TelaPrincipal(){}
+    public TelaPrincipal(Sistema s, Usuario user_login){
         setContentPane(telaPrincipal);
-        setTitle("BaldoFlix");
+        setTitle("_____Flix");
         setSize(450,300);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
         user = user_login;
+        sist = s;
+        addMediaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AddMedia telaAddMedia = new AddMedia(sist, user);
+            }
+        });
+    }
+
+
+    public void addFilme(){
     }
     
     //Image image=GenerateImage.toImage(true);  //this generates an image file

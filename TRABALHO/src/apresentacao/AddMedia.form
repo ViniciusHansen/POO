@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="apresentacao.AddMedia">
+  <grid id="27dc6" binding="AddMedia" layout-manager="GridLayoutManager" row-count="16" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="717" height="675"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="77ff8" class="javax.swing.JTextField" binding="FilmeTitulo">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="8857" class="javax.swing.JTextField" binding="FilmeDur">
+        <constraints>
+          <grid row="11" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="830bf" class="javax.swing.JTextField" binding="FilmeAno">
+        <constraints>
+          <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="9849d" class="javax.swing.JTextField" binding="FilmeDesc">
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="ff13f" class="javax.swing.JTextField" binding="FilmeGen">
+        <constraints>
+          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="b173a" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Titulo:"/>
+        </properties>
+      </component>
+      <component id="a18bf" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Descrição:"/>
+        </properties>
+      </component>
+      <component id="78ffd" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Gênero:"/>
+        </properties>
+      </component>
+      <component id="94628" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Ano:"/>
+        </properties>
+      </component>
+      <component id="e00ae" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Duração:"/>
+        </properties>
+      </component>
+      <component id="98976" class="javax.swing.JButton" binding="adicionarFilmeButton" default-binding="true">
+        <constraints>
+          <grid row="12" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Adicionar Filme"/>
+        </properties>
+      </component>
+      <hspacer id="d5a95">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <vspacer id="cc06e">
+        <constraints>
+          <grid row="15" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="408e0">
+        <constraints>
+          <grid row="5" column="5" row-span="11" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="8a811">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <component id="2726a" class="javax.swing.JLabel" binding="FilmeSucesso">
+        <constraints>
+          <grid row="13" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-11486400"/>
+          <text value="Filme adicionado"/>
+        </properties>
+      </component>
+      <component id="1cc5e" class="javax.swing.JLabel" binding="FilmeErro">
+        <constraints>
+          <grid row="14" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-4514016"/>
+          <text value="Erro ao adicionar o Filme"/>
+        </properties>
+      </component>
+      <component id="5c3eb" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Filme"/>
+        </properties>
+      </component>
+      <component id="f27bb" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Série"/>
+        </properties>
+      </component>
+      <component id="e7b0" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Titulo:"/>
+        </properties>
+      </component>
+      <component id="64a41" class="javax.swing.JTextField" binding="SerieTitulo">
+        <constraints>
+          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="58d3c" class="javax.swing.JTextField" binding="SerieDesc">
+        <constraints>
+          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="ad3fa" class="javax.swing.JTextField" binding="SerieGen">
+        <constraints>
+          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="e7544" class="javax.swing.JTextField" binding="SerieAno">
+        <constraints>
+          <grid row="9" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="24e3" class="javax.swing.JTextField" binding="SerieTemporada">
+        <constraints>
+          <grid row="11" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="4f509" class="javax.swing.JButton" binding="adicionarSérieButton" default-binding="true">
+        <constraints>
+          <grid row="12" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Adicionar Série"/>
+        </properties>
+      </component>
+      <component id="21818" class="javax.swing.JLabel" binding="SerieSucesso">
+        <constraints>
+          <grid row="13" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-11355324"/>
+          <text value="Série adicionada"/>
+        </properties>
+      </component>
+      <component id="67bd4" class="javax.swing.JLabel" binding="SerieErro">
+        <constraints>
+          <grid row="14" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-4514016"/>
+          <text value="Erro ao adicionar a Série"/>
+        </properties>
+      </component>
+      <component id="98804" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Temporada:"/>
+        </properties>
+      </component>
+      <component id="b1b2e" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Ano:"/>
+        </properties>
+      </component>
+      <component id="60fbb" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Gênero:"/>
+        </properties>
+      </component>
+      <component id="ca5cc" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Descrição:"/>
+        </properties>
+      </component>
+      <component id="58b2c" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Episódio"/>
+        </properties>
+      </component>
+      <component id="c77dc" class="javax.swing.JButton" binding="adicionarEpisódioButton" default-binding="true">
+        <constraints>
+          <grid row="12" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Adicionar Episódio"/>
+        </properties>
+      </component>
+      <component id="9c6dc" class="javax.swing.JLabel" binding="EpSucesso">
+        <constraints>
+          <grid row="13" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-11355324"/>
+          <text value="Episódio adicionado"/>
+        </properties>
+      </component>
+      <component id="ba99f" class="javax.swing.JLabel" binding="EpErro">
+        <constraints>
+          <grid row="14" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-4514016"/>
+          <text value="Erro ao adicionar o Episódio"/>
+        </properties>
+      </component>
+      <hspacer id="49bef">
+        <constraints>
+          <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <component id="ca31b" class="javax.swing.JTextField" binding="EpDur">
+        <constraints>
+          <grid row="9" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="47dbe" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Duração:"/>
+        </properties>
+      </component>
+      <component id="fd9ac" class="javax.swing.JTextField" binding="EpDesc">
+        <constraints>
+          <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="1e75" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Descrição:"/>
+        </properties>
+      </component>
+      <component id="b5ff0" class="javax.swing.JTextField" binding="EpNumero">
+        <constraints>
+          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="f61c7" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Número do Ep:"/>
+        </properties>
+      </component>
+      <component id="56b3a" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Série:"/>
+        </properties>
+      </component>
+      <component id="de2a" class="javax.swing.JTextField" binding="EpSerie">
+        <constraints>
+          <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+    </children>
+  </grid>
+</form>
