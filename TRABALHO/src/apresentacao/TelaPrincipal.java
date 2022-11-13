@@ -11,8 +11,8 @@ import java.awt.event.ActionListener;
 public class TelaPrincipal extends JFrame{
     private JPanel telaPrincipal;
     private JButton addMediaButton;
-    protected Sistema sist;
-    protected Usuario user;
+    protected Sistema sist = new Sistema();
+    protected Usuario user = new Usuario();
 
     public TelaPrincipal(){}
     public TelaPrincipal(Sistema s, Usuario user_login){
@@ -26,7 +26,7 @@ public class TelaPrincipal extends JFrame{
         addMediaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AddMedia telaAddMedia = new AddMedia(sist, user);
+                AddMedia telaAddMedia = new AddMedia(user);
             }
         });
     }

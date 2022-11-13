@@ -36,11 +36,11 @@ public class AddMedia extends TelaPrincipal{
     private JPanel AddMedia;
     private JTextField EpSerie;
 
-    public AddMedia(Sistema s, Usuario u){
+    public AddMedia(Usuario u){
         setContentPane(AddMedia);
         setTitle("Adicionar Mídia");
         setSize(800,400);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setVisible(true);
         FilmeErro.setVisible(false);
         FilmeSucesso.setVisible(false);

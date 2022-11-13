@@ -1,12 +1,13 @@
 package dados;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Usuario {
 	private int id;
 	private String dataNascimento, nome, senha;
-	private List<Filme> filmes;
-	private List<Serie> series;
+	private List<Filme> filmes = new ArrayList<Filme>();
+	private List<Serie> series = new ArrayList<Serie>();
 	
 	public void cadastrarFilme(Filme filme) {
 		filmes.add(filme);

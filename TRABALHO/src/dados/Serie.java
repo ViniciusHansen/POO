@@ -1,9 +1,10 @@
 package dados;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Serie extends Conteudo{
-	private List<Episodio> episodios;
+	private List<Episodio> episodios = new ArrayList<Episodio>();
 	private int temporada;
 
 	public Serie(String t, String gen, String desc, int a, int tempo) {
