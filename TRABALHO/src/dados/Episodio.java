@@ -21,8 +21,8 @@ public class Episodio {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public String toString() {
-		return "Episodio [id=" + id + ", duracao=" + duracao + ", descricao=" + descricao + "]";
+	public String toString(){
+		return String.format("\nEpisodio: %d \nDescrição: %s \nDuração: %d minutos \n",id,descricao,duracao);
 	}
 	
 	

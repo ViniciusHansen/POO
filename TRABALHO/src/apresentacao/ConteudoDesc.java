@@ -16,6 +16,7 @@ public class ConteudoDesc extends JFrame{
     private JTextArea infoTextArea;
     private JButton excluirButton;
     private JButton voltarButton;
+    private JButton adicionarElencoButton;
     private Sistema sist;
     private Usuario user;
 
@@ -44,6 +45,13 @@ public class ConteudoDesc extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 TelaPrincipal volta = new TelaPrincipal(sist, user);
+                dispose();
+            }
+        });
+        adicionarElencoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AddElenco novo = new AddElenco(c, sist, user);
                 dispose();
             }
         });

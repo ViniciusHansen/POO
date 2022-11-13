@@ -30,7 +30,7 @@ public class Serie extends Conteudo{
 
 	@Override
 	public String toString() {
-		return String.format("Título: %s | Temporada: %d \n Número de Episódios: %d \n Descrição: %s \n Gênero: %s \n Ano: %d \n Elenco Principal: %s \n " +
-				"Elenco Secundário: %s", titulo, temporada, episodios.size(), descricao, genero, ano, elencoPrincipal, elencoSecundario);
+		return String.format("\nTítulo: %s \n Temporada: %d \n Episódios: %s \n Descrição: %s \n Gênero: %s \n Ano: %d \n Elenco Principal: %s \n" +
+				"Elenco Secundário: %s\n", titulo, temporada, episodios, descricao, genero, ano, elencoPrincipal, elencoSecundario);
 	}
 }

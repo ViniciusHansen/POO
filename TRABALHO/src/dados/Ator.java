@@ -2,8 +2,7 @@ package dados;
 
 public class Ator {
 	private int id;
-	private String nome, dataNascimento;
-	private char sexo;
+	private String nome, dataNascimento, sexo;
 	public int getId() {
 		return id;
 	}
@@ -22,14 +21,19 @@ public class Ator {
 	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
-	public char getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
-	public void setSexo(char sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
+	public Ator(String n, String nasc, String s){
+		nome = n;
+		dataNascimento = nasc;
+		sexo = s;
+	}
 	public String toString() {
-		return "Ator [id=" + id + ", nome=" + nome + ", dataNascimento=" + dataNascimento + ", sexo=" + sexo + "]";
+		return String.format("\nNome: %s \nData de Nascimento: %s \nSexo: %s \n",nome,dataNascimento,sexo);
 	}
 	
 }
