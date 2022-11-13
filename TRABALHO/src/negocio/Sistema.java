@@ -40,6 +40,10 @@ public class Sistema {
 		return user.removerFilme(f);
 	}
 
+	public List<Usuario> getUsers() {
+		return users;
+	}
+
 	public boolean cadastrarSerie(Usuario user, Serie s) {
 		user.cadastrarSerie(s);
 		return true;

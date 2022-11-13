@@ -18,6 +18,8 @@ public class Login extends JFrame{
     private JLabel contaCriada;
     private JLabel erroLogin;
     private JLabel loginSucesso;
+    private JButton deletarContaButton;
+    private JLabel ContaDeletada;
     private Sistema sist = new Sistema();
 
     public Login(){
@@ -30,6 +32,7 @@ public class Login extends JFrame{
         contaCriada.setVisible(false);
         erroLogin.setVisible(false);
         loginSucesso.setVisible(false);
+        ContaDeletada.setVisible(false);
         criarContaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -98,6 +101,19 @@ public class Login extends JFrame{
                 }else{
                     erroLogin.setVisible(true);
                 }
+            }
+        });
+        deletarContaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String login = loginField.getText();
+                String senha = new String(passwordField1.getPassword());
+                for(Usuario us : sist.getUsers())
+                    if(us.getNome().equals(login) && us.getSenha().equals(senha)) {
+                        sist.deletarUsuario(us);
+                        ContaDeletada.setVisible(true);
+                        break;
+                    }
             }
         });
     }
