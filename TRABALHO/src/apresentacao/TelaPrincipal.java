@@ -1,6 +1,8 @@
 package apresentacao;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import dados.Conteudo;
 import dados.Usuario;
@@ -9,6 +11,7 @@ import negocio.Sistema;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class TelaPrincipal extends JFrame{
     protected Sistema sist = new Sistema();
@@ -24,13 +27,13 @@ public class TelaPrincipal extends JFrame{
         this.user = user;
     }
 
-    public TelaPrincipal(){}
     public TelaPrincipal(Sistema s, Usuario user_login){
         setContentPane(telaPrincipal);
         setTitle("_____Flix");
         setSize(450,300);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
+        setLocationRelativeTo(null);
         user = user_login;
         sist = s;
 
@@ -47,11 +50,17 @@ public class TelaPrincipal extends JFrame{
                 dispose();
             }
         });
-        debugButton.addActionListener(new ActionListener() {
+        ConteudoList.addListSelectionListener(new ListSelectionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Lista de conteudos");
-                System.out.println(user.getAllConteudo());
+            public void valueChanged(ListSelectionEvent e) {
+                Conteudo procurado = null;
+                for(Conteudo c : user.getAllConteudo())
+                    if(c.getTitulo() == ConteudoList.getSelectedValue()) {
+                        procurado = c;
+                        break;
+                    }
+                ConteudoDesc desc = new ConteudoDesc(procurado, sist, user);
+                dispose();
             }
         });
     }

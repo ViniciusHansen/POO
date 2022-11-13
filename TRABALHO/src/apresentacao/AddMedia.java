@@ -40,6 +40,7 @@ public class AddMedia extends JFrame{
         setSize(800,400);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setVisible(true);
+        setLocationRelativeTo(null);
         FilmeErro.setVisible(false);
         FilmeSucesso.setVisible(false);
         SerieErro.setVisible(false);

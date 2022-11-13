@@ -58,8 +58,8 @@ public abstract class Conteudo {
 	}
 
 	public String toString() {
-		return String.format("Título: {} | Descrição: {} | Gênero: {} | Ano: {} | Elenco Principal: {} | " +
-				"Elenco Secundário: {}", titulo, descricao, genero, ano, elencoPrincipal, elencoSecundario);
+		return String.format("Título: %s | Descrição: %s | Gênero: %s | Ano: %d | Elenco Principal: %s | " +
+				"Elenco Secundário: %s", titulo, descricao, genero, ano, elencoPrincipal, elencoSecundario);
 	}
 
 	

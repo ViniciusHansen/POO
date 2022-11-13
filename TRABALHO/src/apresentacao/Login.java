@@ -34,6 +34,7 @@ public class Login extends JFrame{
         setSize(450,300);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
+        setLocationRelativeTo(null);
         contaCriada.setVisible(false);
         erroLogin.setVisible(false);
         loginSucesso.setVisible(false);
