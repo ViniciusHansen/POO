@@ -1,16 +1,13 @@
 package apresentacao;
 
-import dados.Episodio;
-import dados.Filme;
-import dados.Serie;
-import dados.Usuario;
+import dados.*;
 import negocio.Sistema;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AddMedia extends TelaPrincipal{
+public class AddMedia extends JFrame{
     private JTextField FilmeTitulo;
     private JTextField FilmeDur;
     private JTextField FilmeAno;
@@ -35,8 +32,9 @@ public class AddMedia extends TelaPrincipal{
     private JLabel EpErro;
     private JPanel AddMedia;
     private JTextField EpSerie;
+    private JButton voltarButton;
 
-    public AddMedia(Usuario u){
+    public AddMedia(Sistema sist, Usuario user){
         setContentPane(AddMedia);
         setTitle("Adicionar Mídia");
         setSize(800,400);
@@ -82,15 +80,22 @@ public class AddMedia extends TelaPrincipal{
                 String desc = EpDesc.getText();
                 int dur = Integer.valueOf(EpDur.getText());
                 Serie serieProcurada = new Serie("null","null","null",0,0);
-                for(Serie serie : u.getSeries())
+                for(Conteudo serie : user.getSeries())
                     if(serie.getTitulo().equals(serie_nome))
-                        serieProcurada = serie;
+                        serieProcurada = (Serie) serie;
                 Episodio ep = new Episodio();
                 ep.setId(numeroEp);
                 ep.setDescricao(desc);
                 ep.setDuracao(dur);
                 sist.cadastrarEpisodio(serieProcurada,ep);
                 EpSucesso.setVisible(true);
+            }
+        });
+        voltarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TelaPrincipal nova_main = new TelaPrincipal(sist, user);
+                dispose();
             }
         });
     }

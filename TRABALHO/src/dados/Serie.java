@@ -27,12 +27,10 @@ public class Serie extends Conteudo{
 			return false;
 		return true;
 	}
-	
-	public String toString() {
-		return "Serie [episodios=" + episodios + "]";
-	}
-	
 
-	
-	
+	@Override
+	public String toString() {
+		return String.format("Título: {} | Temporada: {} | Número de Episódios: {} | Descrição: {} | Gênero: {} | Ano: {} | Elenco Principal: {} | " +
+				"Elenco Secundário: {}", titulo, temporada, episodios.size(), descricao, genero, ano, elencoPrincipal, elencoSecundario);
+	}
 }

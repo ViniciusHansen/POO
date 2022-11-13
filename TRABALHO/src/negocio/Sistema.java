@@ -62,10 +62,8 @@ public class Sistema {
 	public Collection<String> exibirPorCategoria(Usuario user) {
 		Map<Conteudo, String> cats = new HashMap<Conteudo, String>();
 		
-		for(Filme f : user.getFilmes())
-			cats.put(f, f.getGenero());
-		for(Serie s : user.getSeries())
-			cats.put(s, s.getGenero());
+		for(Conteudo c : user.getAllConteudo())
+			cats.put(c, c.getGenero());
 		return cats.values();
 			
 	}

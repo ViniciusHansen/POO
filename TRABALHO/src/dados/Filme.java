@@ -15,9 +15,10 @@ public class Filme extends Conteudo{
 	public void setDuracao(int duracao) {
 		this.duracao = duracao;
 	}
-	
+
+	@Override
 	public String toString() {
-		return "Filme [duracao=" + duracao + "]";
+		return String.format("Título: {} | Descrição: {} | Gênero: {} | Ano: {} | Duração: {} | Elenco Principal: {} | " +
+				"Elenco Secundário: {}", titulo, descricao, genero, ano, duracao, elencoPrincipal, elencoSecundario);
 	}
-	
 }

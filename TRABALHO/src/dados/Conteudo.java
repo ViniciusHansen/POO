@@ -1,11 +1,12 @@
 package dados;
 
+import java.awt.*;
 import java.util.List;
 
 public abstract class Conteudo {
-	private int id, ano;
-	private String titulo, genero, descricao;
-	private List<Ator> elencoPrincipal, elencoSecundario;
+	protected int id, ano;
+	protected String titulo, genero, descricao;
+	protected List<Ator> elencoPrincipal, elencoSecundario;
 	public Conteudo(String t, String gen, String desc, int a){
 		this.titulo = t;
 		this.descricao = desc;
@@ -57,8 +58,8 @@ public abstract class Conteudo {
 	}
 
 	public String toString() {
-		return "Conteudo [id=" + id + ", ano=" + ano + ", titulo=" + titulo + ", genero=" + genero + ", descricao="
-				+ descricao + ", elencoPrincipal=" + elencoPrincipal + ", elencoSecundario=" + elencoSecundario + "]";
+		return String.format("Título: {} | Descrição: {} | Gênero: {} | Ano: {} | Elenco Principal: {} | " +
+				"Elenco Secundário: {}", titulo, descricao, genero, ano, elencoPrincipal, elencoSecundario);
 	}
 
 	

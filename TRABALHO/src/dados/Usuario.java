@@ -6,10 +6,11 @@ import java.util.List;
 public class Usuario {
 	private int id;
 	private String dataNascimento, nome, senha;
-	private List<Filme> filmes = new ArrayList<Filme>();
-	private List<Serie> series = new ArrayList<Serie>();
+	private List<Conteudo> filmes = new ArrayList<>();
+	private List<Conteudo> series = new ArrayList<>();
 	
 	public void cadastrarFilme(Filme filme) {
+		filme.setId(filmes.size());
 		filmes.add(filme);
 	}
 	
@@ -22,6 +23,7 @@ public class Usuario {
 	}
 	
 	public void cadastrarSerie(Serie serie) {
+		serie.setId(series.size());
 		series.add(serie);
 	}
 	
@@ -32,21 +34,35 @@ public class Usuario {
 			return false;
 		return true;
 	}
-	
-	public List<Filme> getFilmes() {
+
+	public List<Conteudo> getAllConteudo(){
+		List<Conteudo> all = new ArrayList<>();
+		all.addAll(filmes);
+		all.addAll(series);
+		return all;
+	}
+
+	public List<String> getAllTitulos(){
+		List<String> titulos = new ArrayList<>();
+		for(Conteudo c : getAllConteudo())
+			titulos.add(c.getTitulo());
+		return titulos;
+	}
+
+	public List<Conteudo> getFilmes() {
 		return filmes;
 	}
 	
 	public Filme getFilme(int x) {
-		return filmes.get(x);
+		return (Filme) filmes.get(x);
 	}
 	
-	public List<Serie> getSeries() {
+	public List<Conteudo> getSeries() {
 		return series;
 	}
 	
 	public Serie getSerie(int x){
-		return series.get(x);
+		return (Serie) series.get(x);
 	}
 	
 	public int getId() {
