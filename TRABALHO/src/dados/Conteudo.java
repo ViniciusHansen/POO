@@ -16,7 +16,6 @@ public abstract class Conteudo {
 		this.genero = gen;
 	}
 
-
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -38,17 +37,9 @@ public abstract class Conteudo {
 	public void addToElencoSecundario(Ator ator) {
 		elencoSecundario.add(ator);
 	}
-	public String getDescricao() {
-		return descricao;
-	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
 
 	public String toString() {
 		return String.format("Título: %s | Descrição: %s | Gênero: %s | Ano: %d | Elenco Principal: %s | " +
 				"Elenco Secundário: %s", titulo, descricao, genero, ano, elencoPrincipal, elencoSecundario);
 	}
-
-	
 }

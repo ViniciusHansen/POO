@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Serie extends Conteudo{
-	private List<Episodio> episodios = new ArrayList<Episodio>();
+	private List<Episodio> episodios = new ArrayList<>();
 	private int temporada;
 
 	public Serie(String t, String gen, String desc, int a, int tempo) {
@@ -12,8 +12,12 @@ public class Serie extends Conteudo{
 		this.temporada = tempo;
 	}
 
-	public List<Episodio> getEpisodios() {
-		return episodios;
+	public Episodio getEpisodio(int id) {
+		Episodio e = new Episodio();
+		for(Episodio it : episodios)
+			if(it.getId() == id)
+				e = it;
+		return e;
 	}
 
 	public void cadastrarEpisodio(Episodio ep) {

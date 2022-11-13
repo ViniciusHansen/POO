@@ -10,7 +10,6 @@ import dados.Usuario;
 
 public class Sistema {
 	private List<Usuario> users = new ArrayList<Usuario>();
-	//private Usuario user =new Usuario();
 
 	public void criaUsuario(String login, String senha, String nasc){
 		Usuario u = new Usuario();
@@ -59,21 +58,13 @@ public class Sistema {
 		return s.removerEpisodio(ep);
 	}
 	
-	public Collection<String> exibirPorCategoria(Usuario user) {
-		Map<Conteudo, String> cats = new HashMap<Conteudo, String>();
-		
+	public List<Conteudo> exibirPorCategoria(Usuario user, String categoria) {
+		List<Conteudo> filtro = new ArrayList<>();
 		for(Conteudo c : user.getAllConteudo())
-			cats.put(c, c.getGenero());
-		return cats.values();
+			if(c.getGenero().equals(categoria))
+				filtro.add(c);
+		return filtro;
 			
 	}
-	
-	public String exibirDescricao(Conteudo c) {
-		return c.getDescricao();
-	}
-	
-	public String xRay(Conteudo c) {
-		return c.toString();
-	}
-	
+
 }

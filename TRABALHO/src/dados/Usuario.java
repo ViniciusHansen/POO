@@ -13,7 +13,6 @@ public class Usuario {
 		filme.setId(filmes.size());
 		filmes.add(filme);
 	}
-	
 	public boolean removerFilme(Filme filme) {
 		int antes = filmes.size();
 		filmes.remove(filme);
@@ -21,12 +20,10 @@ public class Usuario {
 			return false;
 		return true;
 	}
-	
 	public void cadastrarSerie(Serie serie) {
 		serie.setId(series.size());
 		series.add(serie);
 	}
-	
 	public boolean removerSerie(Serie serie) {
 		int antes = series.size();
 		series.remove(serie);
@@ -34,14 +31,12 @@ public class Usuario {
 			return false;
 		return true;
 	}
-
 	public List<Conteudo> getAllConteudo(){
 		List<Conteudo> all = new ArrayList<>();
 		all.addAll(filmes);
 		all.addAll(series);
 		return all;
 	}
-
 	public List<String> getAllTitulos(){
 		List<String> titulos = new ArrayList<>();
 		for(Conteudo c : getAllConteudo())

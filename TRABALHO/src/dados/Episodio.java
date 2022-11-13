@@ -9,14 +9,8 @@ public class Episodio {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getDuracao() {
-		return duracao;
-	}
 	public void setDuracao(int duracao) {
 		this.duracao = duracao;
-	}
-	public String getDescricao() {
-		return descricao;
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
@@ -24,7 +18,4 @@ public class Episodio {
 	public String toString(){
 		return String.format("\nEpisodio: %d \nDescrição: %s \nDuração: %d minutos \n",id,descricao,duracao);
 	}
-	
-	
-	
 }
