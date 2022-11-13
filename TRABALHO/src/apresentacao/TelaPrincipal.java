@@ -19,6 +19,8 @@ public class TelaPrincipal extends JFrame{
     private JScrollPane ConteudoScrollPane;
     private JList ConteudoList;
     private JButton logOutButton;
+    private JComboBox CategoriaSeletor;
+    private JButton filtrarPorCategoriaButton;
     private JButton debugButton;
     private DefaultListModel ListaConteudoModel;
 
@@ -39,7 +41,7 @@ public class TelaPrincipal extends JFrame{
         //cria a lista de Conteudo
         ListaConteudoModel = new DefaultListModel();
         ConteudoList.setModel(ListaConteudoModel);
-        for(Conteudo c : user.getAllConteudo())
+        for (Conteudo c : user.getAllConteudo())
             ListaConteudoModel.addElement(c.getTitulo());
 
         addMediaButton.addActionListener(new ActionListener() {
@@ -67,6 +69,25 @@ public class TelaPrincipal extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 Login sair = new Login(sist);
                 dispose();
+            }
+        });
+        CategoriaSeletor.addItem("Sem Filtro");
+        for(String cat : user.getAllCategorias())
+            CategoriaSeletor.addItem(cat);
+        filtrarPorCategoriaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //cria a lista de Conteudo
+                ListaConteudoModel = new DefaultListModel();
+                ConteudoList.setModel(ListaConteudoModel);
+                if(CategoriaSeletor.getSelectedItem().equals("Sem Filtro")) {
+                    for (Conteudo c : user.getAllConteudo())
+                        ListaConteudoModel.addElement(c.getTitulo());
+                }else{
+                    for (Conteudo c : user.getAllConteudo())
+                        if(c.getGenero().equals(CategoriaSeletor.getSelectedItem()))
+                            ListaConteudoModel.addElement(c.getTitulo());
+                }
             }
         });
     }

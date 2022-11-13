@@ -37,11 +37,12 @@ public class Usuario {
 		all.addAll(series);
 		return all;
 	}
-	public List<String> getAllTitulos(){
-		List<String> titulos = new ArrayList<>();
+	public List<String> getAllCategorias(){
+		List<String> cats = new ArrayList<>();
 		for(Conteudo c : getAllConteudo())
-			titulos.add(c.getTitulo());
-		return titulos;
+			if(!cats.contains(c.getGenero()))
+				cats.add(c.getGenero());
+		return cats;
 	}
 
 	public List<Conteudo> getFilmes() {
