@@ -10,8 +10,6 @@ import negocio.Sistema;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class TelaPrincipal extends JFrame{
     protected Sistema sist = new Sistema();
@@ -20,6 +18,7 @@ public class TelaPrincipal extends JFrame{
     private JButton addMediaButton;
     private JScrollPane ConteudoScrollPane;
     private JList ConteudoList;
+    private JButton logOutButton;
     private JButton debugButton;
     private DefaultListModel ListaConteudoModel;
 
@@ -60,6 +59,13 @@ public class TelaPrincipal extends JFrame{
                         break;
                     }
                 ConteudoDesc desc = new ConteudoDesc(procurado, sist, user);
+                dispose();
+            }
+        });
+        logOutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Login sair = new Login(sist);
                 dispose();
             }
         });
