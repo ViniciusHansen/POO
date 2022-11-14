@@ -65,10 +65,11 @@ public class AddMedia extends JFrame{
                 FileNameExtensionFilter filter = new FileNameExtensionFilter(
                         "JPG & GIF Images", "jpg", "gif");
                 chooser.setFileFilter(filter);
-                File arquivo = chooser.getSelectedFile();
+                File arquivo = new File(".");//chooser.getSelectedFile();
                 int returnVal = chooser.showOpenDialog(null);
                 if(returnVal == JFileChooser.APPROVE_OPTION) {
                     System.out.println("You chose to open this file: " + chooser.getSelectedFile().getName());
+                    arquivo = chooser.getSelectedFile();
                 }
                 try {
                     byte[] capa = Files.readAllBytes(arquivo.toPath());
@@ -93,11 +94,16 @@ public class AddMedia extends JFrame{
                 FileNameExtensionFilter filter = new FileNameExtensionFilter(
                         "JPG & GIF Images", "jpg", "gif");
                 chooser.setFileFilter(filter);
-                File arquivo = chooser.getSelectedFile();
+                File arquivo = new File(".");//chooser.getSelectedFile();
+                int returnVal = chooser.showOpenDialog(null);
+                if(returnVal == JFileChooser.APPROVE_OPTION) {
+                    System.out.println("You chose to open this file: " + chooser.getSelectedFile().getName());
+                    arquivo = chooser.getSelectedFile();
+                }
                 try {
                     byte[] capa = Files.readAllBytes(arquivo.toPath());
                     Serie procurado = null;
-                    String titulo = FilmeTitulo.getText();
+                    String titulo = SerieTitulo.getText();
                     for(Conteudo c : user.getAllConteudo())
                         if (c.getTitulo().equals(titulo)) {
                             procurado = (Serie) c;

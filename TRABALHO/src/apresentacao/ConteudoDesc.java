@@ -27,7 +27,7 @@ public class ConteudoDesc extends JFrame{
     public ConteudoDesc(Conteudo c, Sistema s, Usuario u){
         setContentPane(ConteudoDesc);
         setTitle(c.getTitulo());
-        setSize(450,600);
+        setSize(600,400);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setVisible(true);
         setLocationRelativeTo(null);

@@ -14,8 +14,10 @@ public abstract class Conteudo {
 	protected List<Ator> elencoSecundario = new ArrayList<>();
 
 	public Icon getCapa(){
-		Icon icon = new ImageIcon(capa);
-		return icon;
+		ImageIcon icon = new ImageIcon(capa);
+		Image img = icon.getImage().getScaledInstance(200,300,Image.SCALE_SMOOTH);
+		Icon fim = new ImageIcon(img);
+		return fim;
 	}
 
 	public void setCapa(byte[] capa) {

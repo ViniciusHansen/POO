@@ -3,9 +3,7 @@ package dados;
 public class Ator {
 	private int id;
 	private String nome, dataNascimento, sexo;
-	public int getId() {
-		return id;
-	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
