@@ -1,5 +1,7 @@
 package dados;
 
+import java.io.File;
+
 public class Filme extends Conteudo{
 	private int duracao; //minutos
 

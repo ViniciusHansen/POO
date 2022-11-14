@@ -20,6 +20,7 @@ public class ConteudoDesc extends JFrame{
     private JSpinner spinner;
     private JButton deletarEpisódioButton;
     private JLabel EpDeletadoSucesso;
+    private JLabel capa;
     private Sistema sist;
     private Usuario user;
 
@@ -38,6 +39,8 @@ public class ConteudoDesc extends JFrame{
             spinner.setVisible(false);
             deletarEpisódioButton.setVisible(false);
         }
+        capa.setIcon(c.getCapa());
+
         sist = s;
         user = u;
         infoTextArea.setText(c.toString());

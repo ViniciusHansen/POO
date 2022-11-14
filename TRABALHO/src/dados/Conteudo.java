@@ -1,6 +1,9 @@
 package dados;
 
+import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +12,17 @@ public abstract class Conteudo {
 	protected String titulo, genero, descricao;
 	protected List<Ator> elencoPrincipal = new ArrayList<>();
 	protected List<Ator> elencoSecundario = new ArrayList<>();
+
+	public Icon getCapa(){
+		Icon icon = new ImageIcon(capa);
+		return icon;
+	}
+
+	public void setCapa(byte[] capa) {
+		this.capa = capa;
+	}
+
+	protected byte[] capa;
 	public Conteudo(String t, String gen, String desc, int a){
 		this.titulo = t;
 		this.descricao = desc;

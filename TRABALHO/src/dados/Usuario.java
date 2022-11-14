@@ -45,30 +45,11 @@ public class Usuario {
 		return cats;
 	}
 
-	public List<Conteudo> getFilmes() {
-		return filmes;
-	}
-	
-	public Filme getFilme(int x) {
-		return (Filme) filmes.get(x);
-	}
-	
 	public List<Conteudo> getSeries() {
 		return series;
 	}
-	
-	public Serie getSerie(int x){
-		return (Serie) series.get(x);
-	}
-	
-	public int getId() {
-		return id;
-	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public String getDataNascimento() {
-		return dataNascimento;
 	}
 	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;

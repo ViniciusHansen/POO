@@ -1,11 +1,19 @@
 package apresentacao;
 
 import dados.*;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import negocio.Sistema;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.Scanner;
 
 public class AddMedia extends JFrame{
     private JTextField FilmeTitulo;
@@ -33,6 +41,8 @@ public class AddMedia extends JFrame{
     private JPanel AddMedia;
     private JTextField EpSerie;
     private JButton voltarButton;
+    private JButton FilmeCapa;
+    private JButton SerieCapa;
 
     public AddMedia(Sistema sist, Usuario user){
         setContentPane(AddMedia);
@@ -47,6 +57,59 @@ public class AddMedia extends JFrame{
         SerieSucesso.setVisible(false);
         EpErro.setVisible(false);
         EpSucesso.setVisible(false);
+
+        FilmeCapa.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser chooser = new JFileChooser();
+                FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                        "JPG & GIF Images", "jpg", "gif");
+                chooser.setFileFilter(filter);
+                File arquivo = chooser.getSelectedFile();
+                int returnVal = chooser.showOpenDialog(null);
+                if(returnVal == JFileChooser.APPROVE_OPTION) {
+                    System.out.println("You chose to open this file: " + chooser.getSelectedFile().getName());
+                }
+                try {
+                    byte[] capa = Files.readAllBytes(arquivo.toPath());
+                    Filme procurado = null;
+                    String titulo = FilmeTitulo.getText();
+                    for(Conteudo c : user.getAllConteudo())
+                        if (c.getTitulo().equals(titulo)) {
+                            procurado = (Filme) c;
+                            break;
+                        }
+                    if(procurado != null)
+                        procurado.setCapa(capa);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+        SerieCapa.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser chooser = new JFileChooser();
+                FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                        "JPG & GIF Images", "jpg", "gif");
+                chooser.setFileFilter(filter);
+                File arquivo = chooser.getSelectedFile();
+                try {
+                    byte[] capa = Files.readAllBytes(arquivo.toPath());
+                    Serie procurado = null;
+                    String titulo = FilmeTitulo.getText();
+                    for(Conteudo c : user.getAllConteudo())
+                        if (c.getTitulo().equals(titulo)) {
+                            procurado = (Serie) c;
+                            break;
+                        }
+                    if(procurado != null)
+                        procurado.setCapa(capa);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
         adicionarFilmeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
