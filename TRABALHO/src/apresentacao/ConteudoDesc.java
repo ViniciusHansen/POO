@@ -7,8 +7,12 @@ import dados.Usuario;
 import negocio.Sistema;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 
 public class ConteudoDesc extends JFrame{
     private JLabel info;
@@ -21,6 +25,7 @@ public class ConteudoDesc extends JFrame{
     private JButton deletarEpisódioButton;
     private JLabel EpDeletadoSucesso;
     private JLabel capa;
+    private JButton mudarCapaButton;
     private Sistema sist;
     private Usuario user;
 
@@ -39,7 +44,8 @@ public class ConteudoDesc extends JFrame{
             spinner.setVisible(false);
             deletarEpisódioButton.setVisible(false);
         }
-        capa.setIcon(c.getCapa());
+        if(c.getCapa() != null)
+            capa.setIcon(c.getCapa());
 
         sist = s;
         user = u;
@@ -76,6 +82,29 @@ public class ConteudoDesc extends JFrame{
                 Serie s = (Serie)c;
                 sist.deletarEpisodio(s,s.getEpisodio(nb));
                 EpDeletadoSucesso.setVisible(true);
+            }
+        });
+        mudarCapaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser chooser = new JFileChooser();
+                FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                        "JPG & GIF Images", "jpg", "gif");
+                chooser.setFileFilter(filter);
+                File arquivo = new File(".");//chooser.getSelectedFile();
+                int returnVal = chooser.showOpenDialog(null);
+                if(returnVal == JFileChooser.APPROVE_OPTION) {
+                    System.out.println("You chose to open this file: " + chooser.getSelectedFile().getName());
+                    arquivo = chooser.getSelectedFile();
+                }
+                try {
+                    byte[] capa = Files.readAllBytes(arquivo.toPath());
+                    c.setCapa(capa);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+                ConteudoDesc atualzia = new ConteudoDesc(c,sist,user);
+                dispose();
             }
         });
     }

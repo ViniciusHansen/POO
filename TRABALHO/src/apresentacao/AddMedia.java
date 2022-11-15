@@ -75,11 +75,17 @@ public class AddMedia extends JFrame{
                     byte[] capa = Files.readAllBytes(arquivo.toPath());
                     Filme procurado = null;
                     String titulo = FilmeTitulo.getText();
-                    for(Conteudo c : user.getAllConteudo())
+                    int count = 0;
+                    for(Conteudo c : user.getAllConteudo()) {
                         if (c.getTitulo().equals(titulo)) {
                             procurado = (Filme) c;
+                            count++;
                             break;
                         }
+                    }
+                    if(count == 0){
+                        JOptionPane.showMessageDialog(null,"Adicione o Filme antes de adicionar a capa");
+                    }
                     if(procurado != null)
                         procurado.setCapa(capa);
                 } catch (IOException ex) {
@@ -104,11 +110,17 @@ public class AddMedia extends JFrame{
                     byte[] capa = Files.readAllBytes(arquivo.toPath());
                     Serie procurado = null;
                     String titulo = SerieTitulo.getText();
-                    for(Conteudo c : user.getAllConteudo())
+                    int count = 0;
+                    for(Conteudo c : user.getAllConteudo()) {
                         if (c.getTitulo().equals(titulo)) {
                             procurado = (Serie) c;
+                            count++;
                             break;
                         }
+                    }
+                    if(count == 0){
+                        JOptionPane.showMessageDialog(null,"Adicione a Serie antes de adicionar a capa");
+                    }
                     if(procurado != null)
                         procurado.setCapa(capa);
                 } catch (IOException ex) {

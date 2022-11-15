@@ -32,9 +32,16 @@ public class Serie extends Conteudo{
 		return true;
 	}
 
+	public String getEpisodios(){
+		String eps = new String();
+		for(Episodio e : episodios)
+			eps += e.toString();
+		return eps;
+	}
+
 	@Override
 	public String toString() {
-		return String.format("\nTítulo: %s \n Temporada: %d \n Episódios: %s \n Descrição: %s \n Gênero: %s \n Ano: %d \n Elenco Principal: %s \n" +
-				"Elenco Secundário: %s\n", titulo, temporada, episodios, descricao, genero, ano, elencoPrincipal, elencoSecundario);
+		return String.format("• Título: %s \n• Temporada: %d  \n• Descrição: %s \n• Gênero: %s \n• Ano: %d \n\n‣ Episódios: %s \n\n‣ Elenco Principal: %s \n\n‣" +
+				" Elenco Secundário: %s\n", titulo, temporada, descricao, genero, ano, this.getEpisodios(), this.getElenco1(), this.getElenco2());
 	}
 }

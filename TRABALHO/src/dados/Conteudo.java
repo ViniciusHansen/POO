@@ -12,8 +12,11 @@ public abstract class Conteudo {
 	protected String titulo, genero, descricao;
 	protected List<Ator> elencoPrincipal = new ArrayList<>();
 	protected List<Ator> elencoSecundario = new ArrayList<>();
+	protected byte[] capa;
 
 	public Icon getCapa(){
+		if(capa == null)
+			return null;
 		ImageIcon icon = new ImageIcon(capa);
 		Image img = icon.getImage().getScaledInstance(200,300,Image.SCALE_SMOOTH);
 		Icon fim = new ImageIcon(img);
@@ -24,7 +27,6 @@ public abstract class Conteudo {
 		this.capa = capa;
 	}
 
-	protected byte[] capa;
 	public Conteudo(String t, String gen, String desc, int a){
 		this.titulo = t;
 		this.descricao = desc;
@@ -54,8 +56,18 @@ public abstract class Conteudo {
 		elencoSecundario.add(ator);
 	}
 
-	public String toString() {
-		return String.format("Título: %s | Descrição: %s | Gênero: %s | Ano: %d | Elenco Principal: %s | " +
-				"Elenco Secundário: %s", titulo, descricao, genero, ano, elencoPrincipal, elencoSecundario);
+	public String getElenco1() {
+		String elenco1 = new String();
+		for(Ator a : elencoPrincipal)
+			elenco1 += a.toString();
+		return elenco1;
 	}
+
+	public String getElenco2(){
+		String elenco2 = new String();
+			for(Ator a : elencoSecundario)
+		elenco2 += a.toString();
+		return elenco2;
+	}
+
 }

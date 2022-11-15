@@ -14,7 +14,7 @@ public class Ator {
 		sexo = s;
 	}
 	public String toString() {
-		return String.format("\nNome: %s \nData de Nascimento: %s \nSexo: %s \n",nome,dataNascimento,sexo);
+		return String.format("\n- Nome: %s \n- Data de Nascimento: %s \n- Sexo: %s \n",nome,dataNascimento,sexo);
 	}
 	
 }

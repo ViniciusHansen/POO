@@ -16,6 +16,6 @@ public class Episodio {
 		this.descricao = descricao;
 	}
 	public String toString(){
-		return String.format("\nEpisodio: %d \nDescrição: %s \nDuração: %d minutos \n",id,descricao,duracao);
+		return String.format("\n- Episodio: %d \n- Descrição: %s \n- Duração: %d minutos \n",id,descricao,duracao);
 	}
 }

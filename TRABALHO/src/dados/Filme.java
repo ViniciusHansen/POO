@@ -10,7 +10,7 @@ public class Filme extends Conteudo{
 
 	@Override
 	public String toString() {
-		return String.format("Título: %s \nDescrição: %s \nGênero: %s \nAno: %d \nDuração: %d \nElenco Principal: %s \n" +
-				"Elenco Secundário: %s", titulo, descricao, genero, ano, duracao, elencoPrincipal, elencoSecundario);
+		return String.format("• Título: %s \n• Descrição: %s \n• Gênero: %s \n• Ano: %d \n• Duração: %d minutos \n\n‣ Elenco Principal: %s \n\n‣" +
+				" Elenco Secundário: %s", titulo, descricao, genero, ano, duracao, this.getElenco1(), this.getElenco2());
 	}
 }
