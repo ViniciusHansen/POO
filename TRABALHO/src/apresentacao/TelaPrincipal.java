@@ -21,7 +21,6 @@ public class TelaPrincipal extends JFrame{
     private JButton logOutButton;
     private JComboBox CategoriaSeletor;
     private JButton filtrarPorCategoriaButton;
-    private JButton debugButton;
     private DefaultListModel ListaConteudoModel;
 
     public void setUser(Usuario user) {
@@ -30,7 +29,7 @@ public class TelaPrincipal extends JFrame{
 
     public TelaPrincipal(Sistema s, Usuario user_login){
         setContentPane(telaPrincipal);
-        setTitle("_____Flix");
+        setTitle("Tela Principal");
         setSize(450,300);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
@@ -91,11 +90,4 @@ public class TelaPrincipal extends JFrame{
             }
         });
     }
-
-
-
-    //Image image=GenerateImage.toImage(true);  //this generates an image file
-    //ImageIcon icon = new ImageIcon(image);
-    //JLabel thumb = new JLabel();
-    //thumb.setIcon(icon);
 }

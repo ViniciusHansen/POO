@@ -24,7 +24,7 @@ public class Login extends JFrame{
 
     public Login(){
         setContentPane(Login);
-        setTitle("BaldoFlix");
+        setTitle("Login");
         setSize(450,300);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);

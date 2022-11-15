@@ -29,7 +29,7 @@ public class AddElenco extends JFrame{
         user = usuario;
         setContentPane(AddElenco);
         setTitle("Adicionar Elenco");
-        setSize(400,400);
+        setSize(500,400);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setVisible(true);
         setLocationRelativeTo(null);
