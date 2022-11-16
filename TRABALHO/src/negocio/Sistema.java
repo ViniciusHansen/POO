@@ -1,12 +1,9 @@
 package negocio;
 
-import java.util.*;
+import dados.*;
 
-import dados.Conteudo;
-import dados.Episodio;
-import dados.Filme;
-import dados.Serie;
-import dados.Usuario;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Sistema {
 	private List<Usuario> users = new ArrayList<Usuario>();

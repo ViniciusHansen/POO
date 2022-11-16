@@ -1,8 +1,6 @@
 package apresentacao;
 
 import dados.*;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import negocio.Sistema;
 
 import javax.swing.*;
@@ -10,10 +8,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.Scanner;
 
 public class AddMedia extends JFrame{
     private JTextField FilmeTitulo;
