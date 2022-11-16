@@ -66,6 +66,8 @@ public class AddMedia extends JFrame{
                 if(returnVal == JFileChooser.APPROVE_OPTION) {
                     System.out.println("You chose to open this file: " + chooser.getSelectedFile().getName());
                     arquivo = chooser.getSelectedFile();
+                }else{
+                    return;
                 }
                 try {
                     byte[] capa = Files.readAllBytes(arquivo.toPath());
@@ -101,6 +103,8 @@ public class AddMedia extends JFrame{
                 if(returnVal == JFileChooser.APPROVE_OPTION) {
                     System.out.println("You chose to open this file: " + chooser.getSelectedFile().getName());
                     arquivo = chooser.getSelectedFile();
+                }else{
+                    return;
                 }
                 try {
                     byte[] capa = Files.readAllBytes(arquivo.toPath());
@@ -130,6 +134,10 @@ public class AddMedia extends JFrame{
                 String titulo = FilmeTitulo.getText();
                 String desc = FilmeDesc.getText();
                 String gen = FilmeGen.getText();
+                if(titulo.length() == 0 || desc.length() == 0 || gen.length() ==0){
+                   FilmeErro.setVisible(true);
+                   return;
+                }
                 int ano = Integer.valueOf(FilmeAno.getText());
                 int dur = Integer.valueOf(FilmeDur.getText());
                 Filme f = new Filme(titulo,gen,desc,ano,dur);
@@ -143,6 +151,10 @@ public class AddMedia extends JFrame{
                 String titulo = SerieTitulo.getText();
                 String desc = SerieDesc.getText();
                 String gen = SerieGen.getText();
+                if(titulo.length() == 0 || desc.length() == 0 || gen.length() ==0){
+                    SerieErro.setVisible(true);
+                    return;
+                }
                 int ano = Integer.valueOf(SerieAno.getText());
                 int tempo = Integer.valueOf(SerieTemporada.getText());
                 Serie s = new Serie(titulo,gen,desc,ano,tempo);
@@ -154,8 +166,12 @@ public class AddMedia extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String serie_nome = EpSerie.getText();
-                int numeroEp = Integer.valueOf(EpNumero.getText());
                 String desc = EpDesc.getText();
+                if(serie_nome.length() == 0 || desc.length() == 0 ){
+                    EpErro.setVisible(true);
+                    return;
+                }
+                int numeroEp = Integer.valueOf(EpNumero.getText());
                 int dur = Integer.valueOf(EpDur.getText());
                 Serie serieProcurada = new Serie("null","null","null",0,0);
                 for(Conteudo serie : user.getSeries())
