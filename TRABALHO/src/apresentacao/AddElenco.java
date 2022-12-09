@@ -50,7 +50,7 @@ public class AddElenco extends JFrame{
                 String sexo = sexoField.getText();
                 Ator novo = new Ator(nome, nasc, sexo);
                 novo.setId(cont.getElencoSecundario().size()+cont.getElencoPrincipal().size());
-                cont.addToElencoPrincipal(novo);
+                sist.addToElencoPrincipal(cont,novo);
                 addSucesso.setVisible(true);
             }
         });
@@ -62,7 +62,7 @@ public class AddElenco extends JFrame{
                 String sexo = sexoField.getText();
                 Ator novo = new Ator(nome, nasc, sexo);
                 novo.setId(cont.getElencoSecundario().size()+cont.getElencoPrincipal().size());
-                cont.addToElencoSecundario(novo);
+                sist.addToElencoSecundario(cont,novo);
                 addSucesso.setVisible(true);
             }
         });

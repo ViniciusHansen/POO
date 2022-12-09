@@ -39,7 +39,7 @@ public class TelaPrincipal extends JFrame{
         //cria a lista de Conteudo
         ListaConteudoModel = new DefaultListModel();
         ConteudoList.setModel(ListaConteudoModel);
-        for (Conteudo c : user.getAllConteudo())
+        for (Conteudo c : sist.getAllConteudo(user))
             ListaConteudoModel.addElement(c.getTitulo());
 
         addMediaButton.addActionListener(new ActionListener() {
@@ -53,7 +53,7 @@ public class TelaPrincipal extends JFrame{
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 Conteudo procurado = null;
-                for(Conteudo c : user.getAllConteudo())
+                for(Conteudo c : sist.getAllConteudo(user))
                     if(c.getTitulo() == ConteudoList.getSelectedValue()) {
                         procurado = c;
                         break;
@@ -70,7 +70,7 @@ public class TelaPrincipal extends JFrame{
             }
         });
         CategoriaSeletor.addItem("Sem Filtro");
-        for(String cat : user.getAllCategorias())
+        for(String cat : sist.getAllCategorias(user))
             CategoriaSeletor.addItem(cat);
         filtrarPorCategoriaButton.addActionListener(new ActionListener() {
             @Override
@@ -79,10 +79,10 @@ public class TelaPrincipal extends JFrame{
                 ListaConteudoModel = new DefaultListModel();
                 ConteudoList.setModel(ListaConteudoModel);
                 if(CategoriaSeletor.getSelectedItem().equals("Sem Filtro")) {
-                    for (Conteudo c : user.getAllConteudo())
+                    for (Conteudo c : sist.getAllConteudo(user))
                         ListaConteudoModel.addElement(c.getTitulo());
                 }else{
-                    for (Conteudo c : user.getAllConteudo())
+                    for (Conteudo c : sist.getAllConteudo(user))
                         if(c.getGenero().equals(CategoriaSeletor.getSelectedItem()))
                             ListaConteudoModel.addElement(c.getTitulo());
                 }

@@ -74,7 +74,7 @@ public class AddMedia extends JFrame{
                     Filme procurado = null;
                     String titulo = FilmeTitulo.getText();
                     int count = 0;
-                    for(Conteudo c : user.getAllConteudo()) {
+                    for(Conteudo c : sist.getAllConteudo(user)) {
                         if (c.getTitulo().equals(titulo)) {
                             procurado = (Filme) c;
                             count++;
@@ -111,7 +111,7 @@ public class AddMedia extends JFrame{
                     Serie procurado = null;
                     String titulo = SerieTitulo.getText();
                     int count = 0;
-                    for(Conteudo c : user.getAllConteudo()) {
+                    for(Conteudo c : sist.getAllConteudo(user)) {
                         if (c.getTitulo().equals(titulo)) {
                             procurado = (Serie) c;
                             count++;

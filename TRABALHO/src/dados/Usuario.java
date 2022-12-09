@@ -8,41 +8,17 @@ public class Usuario {
 	private String dataNascimento, nome, senha;
 	private List<Conteudo> filmes = new ArrayList<>();
 	private List<Conteudo> series = new ArrayList<>();
-	
-	public void cadastrarFilme(Filme filme) {
-		filme.setId(filmes.size());
-		filmes.add(filme);
+
+	public List<Conteudo> getFilmes() {
+		return filmes;
 	}
-	public boolean removerFilme(Filme filme) {
-		int antes = filmes.size();
-		filmes.remove(filme);
-		if(antes == filmes.size())
-			return false;
-		return true;
+
+	public void setFilmes(List<Conteudo> filmes) {
+		this.filmes = filmes;
 	}
-	public void cadastrarSerie(Serie serie) {
-		serie.setId(series.size());
-		series.add(serie);
-	}
-	public boolean removerSerie(Serie serie) {
-		int antes = series.size();
-		series.remove(serie);
-		if(antes == series.size())
-			return false;
-		return true;
-	}
-	public List<Conteudo> getAllConteudo(){
-		List<Conteudo> all = new ArrayList<>();
-		all.addAll(filmes);
-		all.addAll(series);
-		return all;
-	}
-	public List<String> getAllCategorias(){
-		List<String> cats = new ArrayList<>();
-		for(Conteudo c : getAllConteudo())
-			if(!cats.contains(c.getGenero()))
-				cats.add(c.getGenero());
-		return cats;
+
+	public void setSeries(List<Conteudo> series) {
+		this.series = series;
 	}
 
 	public List<Conteudo> getSeries() {

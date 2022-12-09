@@ -20,19 +20,15 @@ public class Serie extends Conteudo{
 		return e;
 	}
 
-	public void cadastrarEpisodio(Episodio ep) {
-		episodios.add(ep);
+	public void setEpisodios(List<Episodio> episodios) {
+		this.episodios = episodios;
 	}
 
-	public boolean removerEpisodio(Episodio ep) {
-		int antes = episodios.size();
-		episodios.remove(ep);
-		if(antes == episodios.size())
-			return false;
-		return true;
+	public List<Episodio> getEpisodios() {
+		return episodios;
 	}
 
-	public String getEpisodios(){
+	public String getEpisodiosString(){
 		String eps = new String();
 		for(Episodio e : episodios)
 			eps += e.toString();
@@ -42,6 +38,6 @@ public class Serie extends Conteudo{
 	@Override
 	public String toString() {
 		return String.format("• Título: %s \n• Temporada: %d  \n• Descrição: %s \n• Gênero: %s \n• Ano: %d \n\n‣ Episódios: %s \n\n‣ Elenco Principal: %s \n\n‣" +
-				" Elenco Secundário: %s\n", titulo, temporada, descricao, genero, ano, this.getEpisodios(), this.getElenco1(), this.getElenco2());
+				" Elenco Secundário: %s\n", titulo, temporada, descricao, genero, ano, this.getEpisodiosString(), this.getElenco1(), this.getElenco2());
 	}
 }

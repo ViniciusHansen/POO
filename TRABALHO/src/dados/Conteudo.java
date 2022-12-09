@@ -44,14 +44,16 @@ public abstract class Conteudo {
 	public List<Ator> getElencoPrincipal() {
 		return elencoPrincipal;
 	}
-	public void addToElencoPrincipal(Ator ator) {
-		elencoPrincipal.add(ator);
+
+	public void setElencoPrincipal(List<Ator> elencoPrincipal) {
+		this.elencoPrincipal = elencoPrincipal;
+	}
+
+	public void setElencoSecundario(List<Ator> elencoSecundario) {
+		this.elencoSecundario = elencoSecundario;
 	}
 	public List<Ator> getElencoSecundario() {
 		return elencoSecundario;
-	}
-	public void addToElencoSecundario(Ator ator) {
-		elencoSecundario.add(ator);
 	}
 
 	public String getElenco1() {
