@@ -1,45 +1,90 @@
 create table Usuario(
-    id int,
+    UsuarioID int,
     dataNascimento varchar(12),
     nome varchar(20),
     senha varchar(20),
-    primary key (id)
+    primary key (UsuarioID)
 );
-create sequence Usuario;
+create sequence UsuarioID;
+
 
 create table Filme(
-    id int,
+    FilmeID int,
     ano int,
     duracao int,
     titulo varchar(32),
     genero varchar(32),
     descricao varchar(32),
     capa bytea,
-    primary key (id)
+    primary key (FilmeID)
 );
-create sequence Filme;
+create sequence FilmeID;
 
 
 create table Serie(
-    id int,
+    SerieID int,
     ano int,
     temporada int,
-    episodios 
-    titulo varchar(32),
+    episodios titulo varchar(32),
     genero varchar(32),
     descricao varchar(32),
     capa bytea,
-    primary key (id)
+    primary key (SerieID)
 );
-create sequence Serie;
+create sequence SerieID;
+
 
 create table Episodio(
-    id int,
+    EpisodioID int,
+    nome_serie varchar(32),
+    numero_episodio int,
     duracao int,
     descricao varchar(100),
-    primary key (id)
-)
+    primary key (EpisodioID)
+);
+create sequence EpisodioID;
 
-create table episodios(
-    Episodio_id int,
-)
+
+create table Ator(
+    AtorID int,
+    nome varchar(32),
+    dataNascimento varchar(32),
+    sexo varchar(32),
+    primary key (AtorID)
+);
+create sequence AtorID;
+
+
+create table Filme_Usuario(
+    FilmeID int references Filme (FilmeID),
+    UsuarioID int references Usuario (UsuarioID),
+    CONSTRAINT Filme_Usuario_PK primary key (FilmeID, UsuarioID)
+);
+
+create table Episodio_Serie(
+    EpisodioID int references Episodio (EpisodioID),
+    SerieID int references Serie (SerieID),
+    CONSTRAINT Episodio_Serie_PK primary key (EpisodioID, SerieID)
+);
+
+create table Serie_Usuario(
+    SerieID int references Serie (SerieID),
+    UsuarioID int references Usuario (UsuarioID),
+    CONSTRAINT Serie_Usuario_PK primary key (SerieID, UsuarioID)
+);
+
+create table Ator_Filme(
+    AtorID int references Ator (AtorID),
+    FilmeId int references Filme (FilmeID),
+    ElencoPrimario boolean,
+    ElencoSecundario boolean,
+    CONSTRAINT Ator_Filme_PK primary key (AtorID, FilmeID)
+);
+
+create table Ator_Serie(
+    AtorID int references Ator (AtorID),
+    SerieId int references Serie (SerieID),
+    ElencoPrimario boolean,
+    ElencoSecundario boolean,
+    CONSTRAINT Ator_Serie_PK primary key (AtorID, SerieID)
+);
