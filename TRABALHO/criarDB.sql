@@ -17,7 +17,7 @@ create table Filme(
     descricao varchar(100),
     capa bytea,
     primary key (FilmeID),
-    foreign key (UsuarioID) references Usuario (UsuarioID) ON DELETE CASCADE
+    UsuarioID int references Usuario (UsuarioID) ON DELETE CASCADE
 );
 create sequence FilmeID;
 
@@ -31,7 +31,7 @@ create table Serie(
     descricao varchar(100),
     capa bytea,
     primary key (SerieID),
-    foreign key (UsuarioID) references Usuario (UsuarioID) ON DELETE CASCADE
+    UsuarioID int references Usuario (UsuarioID) ON DELETE CASCADE
 );
 create sequence SerieID;
 
@@ -42,7 +42,7 @@ create table Episodio(
     duracao int,
     descricao varchar(100),
     primary key (EpisodioID),
-    foreign key (SerieID) references Serie (SerieID) ON DELETE CASCADE
+    SerieID int references Serie (SerieID) ON DELETE CASCADE
 );
 create sequence EpisodioID;
 
