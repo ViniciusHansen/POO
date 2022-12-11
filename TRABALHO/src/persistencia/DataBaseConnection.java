@@ -15,10 +15,8 @@ public class DataBaseConnection {
             try {
                 Class.forName("org.postgresql.Driver");
                 connection = DriverManager.getConnection(url, username, password);
-            } catch (SQLException e) {
+            } catch (SQLException | ClassNotFoundException e) {
                 e.printStackTrace();
-            } catch (ClassNotFoundException e1) {
-                e1.printStackTrace();
             }
         }
         return connection;

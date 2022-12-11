@@ -10,7 +10,7 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class TelaPrincipal extends JFrame{
+public class TelaPrincipal extends JFrame {
     protected Sistema sist = new Sistema();
     protected Usuario user = new Usuario();
     private JPanel telaPrincipal;
@@ -26,10 +26,10 @@ public class TelaPrincipal extends JFrame{
         this.user = user;
     }
 
-    public TelaPrincipal(Sistema s, Usuario user_login){
+    public TelaPrincipal(Sistema s, Usuario user_login) {
         setContentPane(telaPrincipal);
         setTitle("Tela Principal");
-        setSize(450,300);
+        setSize(450, 300);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
         setLocationRelativeTo(null);
@@ -53,8 +53,8 @@ public class TelaPrincipal extends JFrame{
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 Conteudo procurado = null;
-                for(Conteudo c : sist.getAllConteudo(user))
-                    if(c.getTitulo() == ConteudoList.getSelectedValue()) {
+                for (Conteudo c : sist.getAllConteudo(user))
+                    if (c.getTitulo() == ConteudoList.getSelectedValue()) {
                         procurado = c;
                         break;
                     }
@@ -70,7 +70,7 @@ public class TelaPrincipal extends JFrame{
             }
         });
         CategoriaSeletor.addItem("Sem Filtro");
-        for(String cat : sist.getAllCategorias(user))
+        for (String cat : sist.getAllCategorias(user))
             CategoriaSeletor.addItem(cat);
         filtrarPorCategoriaButton.addActionListener(new ActionListener() {
             @Override
@@ -78,12 +78,12 @@ public class TelaPrincipal extends JFrame{
                 //cria a lista de Conteudo
                 ListaConteudoModel = new DefaultListModel();
                 ConteudoList.setModel(ListaConteudoModel);
-                if(CategoriaSeletor.getSelectedItem().equals("Sem Filtro")) {
+                if (CategoriaSeletor.getSelectedItem().equals("Sem Filtro")) {
                     for (Conteudo c : sist.getAllConteudo(user))
                         ListaConteudoModel.addElement(c.getTitulo());
-                }else{
+                } else {
                     for (Conteudo c : sist.getAllConteudo(user))
-                        if(c.getGenero().equals(CategoriaSeletor.getSelectedItem()))
+                        if (c.getGenero().equals(CategoriaSeletor.getSelectedItem()))
                             ListaConteudoModel.addElement(c.getTitulo());
                 }
             }

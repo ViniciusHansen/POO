@@ -14,7 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
-public class ConteudoDesc extends JFrame{
+public class ConteudoDesc extends JFrame {
     private JLabel info;
     private JPanel ConteudoDesc;
     private JTextArea infoTextArea;
@@ -29,22 +29,22 @@ public class ConteudoDesc extends JFrame{
     private Sistema sist;
     private Usuario user;
 
-    public ConteudoDesc(Conteudo c, Sistema s, Usuario u){
+    public ConteudoDesc(Conteudo c, Sistema s, Usuario u) {
         setContentPane(ConteudoDesc);
         setTitle(c.getTitulo());
-        setSize(600,400);
+        setSize(600, 400);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setVisible(true);
         setLocationRelativeTo(null);
         EpDeletadoSucesso.setVisible(false);
-        if(c instanceof Serie){
+        if (c instanceof Serie) {
             spinner.setVisible(true);
             deletarEpisódioButton.setVisible(true);
-        }else{
+        } else {
             spinner.setVisible(false);
             deletarEpisódioButton.setVisible(false);
         }
-        if(c.getCapa() != null)
+        if (c.getCapa() != null)
             capa.setIcon(c.getCapa());
 
         sist = s;
@@ -53,10 +53,10 @@ public class ConteudoDesc extends JFrame{
         excluirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(c instanceof Filme)
-                    sist.deletarFilme(user, (Filme)c);
-                if(c instanceof Serie)
-                    sist.deletarSerie(user, (Serie)c);
+                if (c instanceof Filme)
+                    sist.deletarFilme(user, (Filme) c);
+                if (c instanceof Serie)
+                    sist.deletarSerie(user, (Serie) c);
                 TelaPrincipal volta = new TelaPrincipal(sist, user);
                 dispose();
             }
@@ -79,8 +79,8 @@ public class ConteudoDesc extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 int nb = (Integer) spinner.getValue();
-                Serie s = (Serie)c;
-                sist.deletarEpisodio(s,s.getEpisodio(nb));
+                Serie s = (Serie) c;
+                sist.deletarEpisodio(s, s.getEpisodio(nb));
                 EpDeletadoSucesso.setVisible(true);
             }
         });
@@ -93,7 +93,7 @@ public class ConteudoDesc extends JFrame{
                 chooser.setFileFilter(filter);
                 File arquivo = new File(".");//chooser.getSelectedFile();
                 int returnVal = chooser.showOpenDialog(null);
-                if(returnVal == JFileChooser.APPROVE_OPTION) {
+                if (returnVal == JFileChooser.APPROVE_OPTION) {
                     System.out.println("You chose to open this file: " + chooser.getSelectedFile().getName());
                     arquivo = chooser.getSelectedFile();
                 }
@@ -103,7 +103,7 @@ public class ConteudoDesc extends JFrame{
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
-                ConteudoDesc atualzia = new ConteudoDesc(c,sist,user);
+                ConteudoDesc atualzia = new ConteudoDesc(c, sist, user);
                 dispose();
             }
         });

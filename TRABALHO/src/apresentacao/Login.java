@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Login extends JFrame{
+public class Login extends JFrame {
     private JTextField loginField;
     private JPasswordField passwordField1;
     private JButton criarContaButton;
@@ -22,10 +22,10 @@ public class Login extends JFrame{
     private JLabel ContaDeletada;
     private Sistema sist = new Sistema();
 
-    public Login(){
+    public Login() {
         setContentPane(Login);
         setTitle("Login");
-        setSize(450,300);
+        setSize(450, 300);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
         setLocationRelativeTo(null);
@@ -39,7 +39,7 @@ public class Login extends JFrame{
                 String login = loginField.getText();
                 String senha = new String(passwordField1.getPassword());
                 String nasc = nascField.getText();
-                if(login.length() == 0 || senha.length() == 0 || nasc.length() ==0) {
+                if (login.length() == 0 || senha.length() == 0 || nasc.length() == 0) {
                     erroLogin.setVisible(true);
                     return;
                 }
@@ -52,22 +52,23 @@ public class Login extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 String login = loginField.getText();
                 String senha = new String(passwordField1.getPassword());
-                Usuario user = sist.loginUsuario(login,senha);
-                if(user != null){
+                Usuario user = sist.loginUsuario(login, senha);
+                if (user != null) {
                     loginSucesso.setVisible(true);
                     TelaPrincipal telaMain = new TelaPrincipal(sist, user);
                     dispose();
-                }else{
+                } else {
                     erroLogin.setVisible(true);
                 }
             }
         });
     }
-    public Login(Sistema sistema){
+
+    public Login(Sistema sistema) {
         sist = sistema;
         setContentPane(Login);
         setTitle("Login");
-        setSize(450,300);
+        setSize(450, 300);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
         setLocationRelativeTo(null);
@@ -80,7 +81,7 @@ public class Login extends JFrame{
                 String login = loginField.getText();
                 String senha = new String(passwordField1.getPassword());
                 String nasc = nascField.getText();
-                if(login.length() == 0 || senha.length() == 0 || nasc.length() ==0) {
+                if (login.length() == 0 || senha.length() == 0 || nasc.length() == 0) {
                     erroLogin.setVisible(true);
                     return;
                 }
@@ -93,12 +94,12 @@ public class Login extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 String login = loginField.getText();
                 String senha = new String(passwordField1.getPassword());
-                Usuario user = sist.loginUsuario(login,senha);
-                if(user != null){
+                Usuario user = sist.loginUsuario(login, senha);
+                if (user != null) {
                     loginSucesso.setVisible(true);
                     TelaPrincipal telaMain = new TelaPrincipal(sist, user);
                     dispose();
-                }else{
+                } else {
                     erroLogin.setVisible(true);
                 }
             }
@@ -108,8 +109,8 @@ public class Login extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 String login = loginField.getText();
                 String senha = new String(passwordField1.getPassword());
-                for(Usuario us : sist.getUsers())
-                    if(us.getNome().equals(login) && us.getSenha().equals(senha)) {
+                for (Usuario us : sist.getUsers())
+                    if (us.getNome().equals(login) && us.getSenha().equals(senha)) {
                         sist.deletarUsuario(us);
                         ContaDeletada.setVisible(true);
                         break;

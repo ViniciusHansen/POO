@@ -9,7 +9,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AddElenco extends JFrame{
+public class AddElenco extends JFrame {
     private JPanel AddElenco;
     private JTextField nomeField;
     private JTextField nascField;
@@ -23,13 +23,13 @@ public class AddElenco extends JFrame{
     private Sistema sist;
     private Usuario user;
 
-    public AddElenco(Conteudo conteudo, Sistema sistema, Usuario usuario){
+    public AddElenco(Conteudo conteudo, Sistema sistema, Usuario usuario) {
         cont = conteudo;
         sist = sistema;
         user = usuario;
         setContentPane(AddElenco);
         setTitle("Adicionar Elenco");
-        setSize(500,400);
+        setSize(500, 400);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setVisible(true);
         setLocationRelativeTo(null);
@@ -38,7 +38,7 @@ public class AddElenco extends JFrame{
         voltarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ConteudoDesc volta = new ConteudoDesc(cont,sist,user);
+                ConteudoDesc volta = new ConteudoDesc(cont, sist, user);
                 dispose();
             }
         });
@@ -49,8 +49,8 @@ public class AddElenco extends JFrame{
                 String nasc = nascField.getText();
                 String sexo = sexoField.getText();
                 Ator novo = new Ator(nome, nasc, sexo);
-                novo.setId(cont.getElencoSecundario().size()+cont.getElencoPrincipal().size());
-                sist.addToElencoPrincipal(cont,novo);
+                novo.setId(cont.getElencoSecundario().size() + cont.getElencoPrincipal().size());
+                sist.addToElencoPrincipal(cont, novo);
                 addSucesso.setVisible(true);
             }
         });
@@ -61,8 +61,8 @@ public class AddElenco extends JFrame{
                 String nasc = nascField.getText();
                 String sexo = sexoField.getText();
                 Ator novo = new Ator(nome, nasc, sexo);
-                novo.setId(cont.getElencoSecundario().size()+cont.getElencoPrincipal().size());
-                sist.addToElencoSecundario(cont,novo);
+                novo.setId(cont.getElencoSecundario().size() + cont.getElencoPrincipal().size());
+                sist.addToElencoSecundario(cont, novo);
                 addSucesso.setVisible(true);
             }
         });
