@@ -56,34 +56,34 @@ create sequence AtorID;
 
 
 create table Filme_Usuario(
-    FilmeID int references Filme (FilmeID),
-    UsuarioID int references Usuario (UsuarioID),
+    FilmeID int references Filme (FilmeID) ON DELETE CASCADE,
+    UsuarioID int references Usuario (UsuarioID) ON DELETE CASCADE,
     CONSTRAINT Filme_Usuario_PK primary key (FilmeID, UsuarioID)
 );
 
 create table Episodio_Serie(
-    EpisodioID int references Episodio (EpisodioID),
-    SerieID int references Serie (SerieID),
+    EpisodioID int references Episodio (EpisodioID) ON DELETE CASCADE,
+    SerieID int references Serie (SerieID) ON DELETE CASCADE,
     CONSTRAINT Episodio_Serie_PK primary key (EpisodioID, SerieID)
 );
 
 create table Serie_Usuario(
-    SerieID int references Serie (SerieID),
-    UsuarioID int references Usuario (UsuarioID),
+    SerieID int references Serie (SerieID) ON DELETE CASCADE,
+    UsuarioID int references Usuario (UsuarioID) ON DELETE CASCADE,
     CONSTRAINT Serie_Usuario_PK primary key (SerieID, UsuarioID)
 );
 
 create table Ator_Filme(
-    AtorID int references Ator (AtorID),
-    FilmeId int references Filme (FilmeID),
+    AtorID int references Ator (AtorID) ON DELETE CASCADE,
+    FilmeId int references Filme (FilmeID) ON DELETE CASCADE,
     ElencoPrimario boolean,
     ElencoSecundario boolean,
     CONSTRAINT Ator_Filme_PK primary key (AtorID, FilmeID)
 );
 
 create table Ator_Serie(
-    AtorID int references Ator (AtorID),
-    SerieId int references Serie (SerieID),
+    AtorID int references Ator (AtorID) ON DELETE CASCADE,
+    SerieId int references Serie (SerieID) ON DELETE CASCADE,
     ElencoPrimario boolean,
     ElencoSecundario boolean,
     CONSTRAINT Ator_Serie_PK primary key (AtorID, SerieID)
