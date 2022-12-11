@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.sql.SQLException;
 
 public class AddMedia extends JFrame {
     private JTextField FilmeTitulo;
@@ -86,7 +87,7 @@ public class AddMedia extends JFrame {
                     }
                     if (procurado != null)
                         procurado.setCapa(capa);
-                } catch (IOException ex) {
+                } catch (IOException | SQLException ex) {
                     throw new RuntimeException(ex);
                 }
             }
@@ -123,7 +124,7 @@ public class AddMedia extends JFrame {
                     }
                     if (procurado != null)
                         procurado.setCapa(capa);
-                } catch (IOException ex) {
+                } catch (IOException | SQLException ex) {
                     throw new RuntimeException(ex);
                 }
             }
@@ -141,7 +142,11 @@ public class AddMedia extends JFrame {
                 int ano = Integer.valueOf(FilmeAno.getText());
                 int dur = Integer.valueOf(FilmeDur.getText());
                 Filme f = new Filme(titulo, gen, desc, ano, dur);
-                sist.cadastrarFilme(user, f);
+                try {
+                    sist.cadastrarFilme(user, f);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
                 FilmeSucesso.setVisible(true);
             }
         });
@@ -158,7 +163,11 @@ public class AddMedia extends JFrame {
                 int ano = Integer.valueOf(SerieAno.getText());
                 int tempo = Integer.valueOf(SerieTemporada.getText());
                 Serie s = new Serie(titulo, gen, desc, ano, tempo);
-                sist.cadastrarSerie(user, s);
+                try {
+                    sist.cadastrarSerie(user, s);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
                 SerieSucesso.setVisible(true);
             }
         });
@@ -174,21 +183,33 @@ public class AddMedia extends JFrame {
                 int numeroEp = Integer.valueOf(EpNumero.getText());
                 int dur = Integer.valueOf(EpDur.getText());
                 Serie serieProcurada = new Serie("null", "null", "null", 0, 0);
-                for (Conteudo serie : user.getSeries())
-                    if (serie.getTitulo().equals(serie_nome))
-                        serieProcurada = (Serie) serie;
+                try {
+                    for (Conteudo serie : sist.getSeries(user))
+                        if (serie.getTitulo().equals(serie_nome))
+                            serieProcurada = (Serie) serie;
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
                 Episodio ep = new Episodio();
                 ep.setId(numeroEp);
                 ep.setDescricao(desc);
                 ep.setDuracao(dur);
-                sist.cadastrarEpisodio(serieProcurada, ep);
+                try {
+                    sist.cadastrarEpisodio(serieProcurada, ep);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
                 EpSucesso.setVisible(true);
             }
         });
         voltarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                TelaPrincipal nova_main = new TelaPrincipal(sist, user);
+                try {
+                    TelaPrincipal nova_main = new TelaPrincipal(sist, user);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
                 dispose();
             }
         });

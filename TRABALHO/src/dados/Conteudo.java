@@ -2,17 +2,23 @@ package dados;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public abstract class Conteudo {
     protected int id;
     protected int ano;
     protected int usuarioID;
     protected String titulo, genero, descricao;
-    //protected List<Ator> elencoPrincipal = new ArrayList<>(); //tirar
-    //protected List<Ator> elencoSecundario = new ArrayList<>(); //tirar
     protected byte[] capa;
+
+    public Conteudo(String t, String gen, String desc, int a) {
+        this.titulo = t;
+        this.descricao = desc;
+        this.ano = a;
+        this.genero = gen;
+    }
+
+    public Conteudo() {
+    }
 
     public int getUsuarioID() {
         return usuarioID;
@@ -31,35 +37,36 @@ public abstract class Conteudo {
         return fim;
     }
 
-    public byte[] getCapaBytes(){
-        return this.capa;
-    }
-
     public void setCapa(byte[] capa) {
         this.capa = capa;
     }
 
-    public Conteudo(String t, String gen, String desc, int a) {
-        this.titulo = t;
-        this.descricao = desc;
-        this.ano = a;
-        this.genero = gen;
-    }
-    public Conteudo(){}
-    public void setId(int id) {
-        this.id = id;
+    public byte[] getCapaBytes() {
+        return this.capa;
     }
 
     public String getTitulo() {
         return titulo;
     }
 
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
     public String getGenero() {
         return genero;
     }
 
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getAno() {
@@ -68,14 +75,6 @@ public abstract class Conteudo {
 
     public void setAno(int ano) {
         this.ano = ano;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
     }
 
     public String getDescricao() {

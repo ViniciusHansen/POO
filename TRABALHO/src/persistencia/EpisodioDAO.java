@@ -1,6 +1,7 @@
 package persistencia;
 
 import dados.Episodio;
+import dados.Serie;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -45,11 +46,12 @@ public class EpisodioDAO {
         return episodio;
     }
 
-    public List<Episodio> listar() throws SQLException {
-        List<Episodio> episodioes = new ArrayList<>();
-        String query = "SELECT * FROM episodio";
+    public List<Episodio> listar(Serie serie) throws SQLException {
+        List<Episodio> episodios = new ArrayList<>();
+        String query = "SELECT * FROM episodio WHERE serieID=?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1,serie.getId());
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Episodio episodio = new Episodio();
@@ -58,19 +60,41 @@ public class EpisodioDAO {
                 episodio.setNumeroEpisodio(resultSet.getInt("numero_episodio"));
                 episodio.setDuracao((resultSet.getInt("duracao")));
                 episodio.setDescricao(resultSet.getString("descricao"));
-                episodioes.add(episodio);
+                episodios.add(episodio);
+            }
+        } catch (SQLException e) {
+            throw new SQLException("Erro ao buscar Episodios");
+        }
+        return episodios;
+    }
+
+    public Episodio procurar(Serie serie, int numeroEp) throws SQLException{
+        String query = "SELECT * FROM episodio WHERE serieID=? AND numero_episodio=?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1,serie.getId());
+            preparedStatement.setInt(2,numeroEp);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                Episodio episodio = new Episodio();
+                episodio.setId(resultSet.getInt("episodioID"));
+                episodio.setSerieID(resultSet.getInt("serieID"));
+                episodio.setNumeroEpisodio(resultSet.getInt("numero_episodio"));
+                episodio.setDuracao((resultSet.getInt("duracao")));
+                episodio.setDescricao(resultSet.getString("descricao"));
+                return episodio;
             }
         } catch (SQLException e) {
             throw new SQLException("Erro ao buscar Episodio");
         }
-        return episodioes;
+        return null;
     }
 
-    public void inserir(Episodio episodio) throws SQLException {
+    public void inserir(Episodio episodio, Serie serie) throws SQLException {
         String query = "INSERT INTO episodio(serieID, numero_episodio, duracao, descricao) VALUES(?,?,?,?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, episodio.getSerieID());
+            preparedStatement.setInt(1, serie.getId());
             preparedStatement.setInt(2,episodio.getNumeroEpisodio());
             preparedStatement.setInt(3, episodio.getDuracao());
             preparedStatement.setString(4, episodio.getDescricao());
@@ -80,11 +104,11 @@ public class EpisodioDAO {
         }
     }
 
-    public void alterar(Episodio episodio) throws SQLException {
+    public void alterar(Episodio episodio, Serie serie) throws SQLException {
         String query = "UPDATE episodio SET serieID=?, numero_episodio=?, duracao=?, descricao=? WHERE episodioId=?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, episodio.getSerieID());
+            preparedStatement.setInt(1, serie.getId());
             preparedStatement.setInt(2,episodio.getNumeroEpisodio());
             preparedStatement.setInt(3, episodio.getDuracao());
             preparedStatement.setString(4, episodio.getDescricao());

@@ -8,8 +8,9 @@ public class Filme extends Conteudo {
         this.duracao = dur;
     }
 
+    public Filme() {
+    }
 
-    public Filme(){}
     public int getDuracao() {
         return duracao;
     }
@@ -18,9 +19,4 @@ public class Filme extends Conteudo {
         this.duracao = duracao;
     }
 
-    @Override
-    public String toString() {
-        return String.format("• Título: %s \n• Descrição: %s \n• Gênero: %s \n• Ano: %d \n• Duração: %d minutos \n\n‣ Elenco Principal: %s \n\n‣" +
-                " Elenco Secundário: %s", titulo, descricao, genero, ano, duracao, this.getElenco1(), this.getElenco2());
-    }
 }

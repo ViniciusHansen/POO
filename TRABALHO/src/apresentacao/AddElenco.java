@@ -2,12 +2,14 @@ package apresentacao;
 
 import dados.Ator;
 import dados.Conteudo;
+import dados.Filme;
 import dados.Usuario;
 import negocio.Sistema;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class AddElenco extends JFrame {
     private JPanel AddElenco;
@@ -49,8 +51,11 @@ public class AddElenco extends JFrame {
                 String nasc = nascField.getText();
                 String sexo = sexoField.getText();
                 Ator novo = new Ator(nome, nasc, sexo);
-                novo.setId(cont.getElencoSecundario().size() + cont.getElencoPrincipal().size());
-                sist.addToElencoPrincipal(cont, novo);
+                try {
+                    sist.addToElencoPrincipal(cont, novo);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
                 addSucesso.setVisible(true);
             }
         });
@@ -61,8 +66,11 @@ public class AddElenco extends JFrame {
                 String nasc = nascField.getText();
                 String sexo = sexoField.getText();
                 Ator novo = new Ator(nome, nasc, sexo);
-                novo.setId(cont.getElencoSecundario().size() + cont.getElencoPrincipal().size());
-                sist.addToElencoSecundario(cont, novo);
+                try {
+                    sist.addToElencoSecundario(cont, novo);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
                 addSucesso.setVisible(true);
             }
         });

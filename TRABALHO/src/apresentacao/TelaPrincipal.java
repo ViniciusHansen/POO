@@ -9,6 +9,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class TelaPrincipal extends JFrame {
     protected Sistema sist = new Sistema();
@@ -26,7 +27,7 @@ public class TelaPrincipal extends JFrame {
         this.user = user;
     }
 
-    public TelaPrincipal(Sistema s, Usuario user_login) {
+    public TelaPrincipal(Sistema s, Usuario user_login) throws SQLException {
         setContentPane(telaPrincipal);
         setTitle("Tela Principal");
         setSize(450, 300);
@@ -53,11 +54,16 @@ public class TelaPrincipal extends JFrame {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 Conteudo procurado = null;
-                for (Conteudo c : sist.getAllConteudo(user))
-                    if (c.getTitulo() == ConteudoList.getSelectedValue()) {
-                        procurado = c;
-                        break;
-                    }
+                try {
+                    for (Conteudo c : sist.getAllConteudo(user))
+                        if (c.getTitulo() == ConteudoList.getSelectedValue()) {
+                            procurado = c;
+                            break;
+                        }
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+                assert procurado != null;
                 ConteudoDesc desc = new ConteudoDesc(procurado, sist, user);
                 dispose();
             }
@@ -79,12 +85,20 @@ public class TelaPrincipal extends JFrame {
                 ListaConteudoModel = new DefaultListModel();
                 ConteudoList.setModel(ListaConteudoModel);
                 if (CategoriaSeletor.getSelectedItem().equals("Sem Filtro")) {
-                    for (Conteudo c : sist.getAllConteudo(user))
-                        ListaConteudoModel.addElement(c.getTitulo());
-                } else {
-                    for (Conteudo c : sist.getAllConteudo(user))
-                        if (c.getGenero().equals(CategoriaSeletor.getSelectedItem()))
+                    try {
+                        for (Conteudo c : sist.getAllConteudo(user))
                             ListaConteudoModel.addElement(c.getTitulo());
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                } else {
+                    try {
+                        for (Conteudo c : sist.getAllConteudo(user))
+                            if (c.getGenero().equals(CategoriaSeletor.getSelectedItem()))
+                                ListaConteudoModel.addElement(c.getTitulo());
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
                 }
             }
         });

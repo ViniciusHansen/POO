@@ -6,6 +6,7 @@ import negocio.Sistema;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class Login extends JFrame {
     private JTextField loginField;
@@ -43,7 +44,12 @@ public class Login extends JFrame {
                     erroLogin.setVisible(true);
                     return;
                 }
-                sist.criaUsuario(login, senha, nasc);
+                try {
+                    sist.criaUsuario(login, senha, nasc);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+
+                }
                 contaCriada.setVisible(true);
             }
         });
@@ -52,10 +58,19 @@ public class Login extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String login = loginField.getText();
                 String senha = new String(passwordField1.getPassword());
-                Usuario user = sist.loginUsuario(login, senha);
+                Usuario user = null;
+                try {
+                    user = sist.loginUsuario(login, senha);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
                 if (user != null) {
                     loginSucesso.setVisible(true);
-                    TelaPrincipal telaMain = new TelaPrincipal(sist, user);
+                    try {
+                        TelaPrincipal telaMain = new TelaPrincipal(sist, user);
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
                     dispose();
                 } else {
                     erroLogin.setVisible(true);
@@ -85,7 +100,11 @@ public class Login extends JFrame {
                     erroLogin.setVisible(true);
                     return;
                 }
-                sist.criaUsuario(login, senha, nasc);
+                try {
+                    sist.criaUsuario(login, senha, nasc);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
                 contaCriada.setVisible(true);
             }
         });
@@ -94,10 +113,19 @@ public class Login extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String login = loginField.getText();
                 String senha = new String(passwordField1.getPassword());
-                Usuario user = sist.loginUsuario(login, senha);
+                Usuario user = null;
+                try {
+                    user = sist.loginUsuario(login, senha);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
                 if (user != null) {
                     loginSucesso.setVisible(true);
-                    TelaPrincipal telaMain = new TelaPrincipal(sist, user);
+                    try {
+                        TelaPrincipal telaMain = new TelaPrincipal(sist, user);
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
                     dispose();
                 } else {
                     erroLogin.setVisible(true);
@@ -109,12 +137,16 @@ public class Login extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String login = loginField.getText();
                 String senha = new String(passwordField1.getPassword());
-                for (Usuario us : sist.getUsers())
-                    if (us.getNome().equals(login) && us.getSenha().equals(senha)) {
-                        sist.deletarUsuario(us);
-                        ContaDeletada.setVisible(true);
-                        break;
-                    }
+                try {
+                    for (Usuario us : sist.getUsers())
+                        if (us.getNome().equals(login) && us.getSenha().equals(senha)) {
+                            sist.deletarUsuario(us);
+                            ContaDeletada.setVisible(true);
+                            break;
+                        }
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
     }

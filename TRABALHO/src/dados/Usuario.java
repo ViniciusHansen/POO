@@ -1,17 +1,15 @@
 package dados;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Usuario {
     private int id;
     private String dataNascimento, nome, senha;
-    //private List<Conteudo> filmes = new ArrayList<>(); //tirar
-    //private List<Conteudo> series = new ArrayList<>(); //tirar
-
 
     public String getDataNascimento() {
         return dataNascimento;
+    }
+
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
     public int getId() {
@@ -20,10 +18,6 @@ public class Usuario {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
     }
 
     public String getNome() {
@@ -40,11 +34,6 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public String toString() {
-        return "Usuario [id=" + id + ", dataNascimento=" + dataNascimento + ", nome=" + nome + ", senha=" + senha
-                + ", filmes=" + filmes + ", series=" + series + "]";
     }
 
 

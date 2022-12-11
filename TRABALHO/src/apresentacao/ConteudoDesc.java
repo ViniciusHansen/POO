@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.sql.SQLException;
 
 public class ConteudoDesc extends JFrame {
     private JLabel info;
@@ -53,18 +54,36 @@ public class ConteudoDesc extends JFrame {
         excluirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (c instanceof Filme)
-                    sist.deletarFilme(user, (Filme) c);
-                if (c instanceof Serie)
-                    sist.deletarSerie(user, (Serie) c);
-                TelaPrincipal volta = new TelaPrincipal(sist, user);
+                if (c instanceof Filme) {
+                    try {
+                        sist.deletarFilme((Filme) c);
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+                if (c instanceof Serie) {
+                    try {
+                        sist.deletarSerie((Serie) c);
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+                try {
+                    TelaPrincipal volta = new TelaPrincipal(sist, user);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
                 dispose();
             }
         });
         voltarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                TelaPrincipal volta = new TelaPrincipal(sist, user);
+                try {
+                    TelaPrincipal volta = new TelaPrincipal(sist, user);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
                 dispose();
             }
         });
@@ -80,7 +99,11 @@ public class ConteudoDesc extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 int nb = (Integer) spinner.getValue();
                 Serie s = (Serie) c;
-                sist.deletarEpisodio(s, s.getEpisodio(nb));
+                try {
+                    sist.deletarEpisodio(sist.getEpisodio(s,nb));
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
                 EpDeletadoSucesso.setVisible(true);
             }
         });
