@@ -1,8 +1,32 @@
 package dados;
 
 public class Episodio {
-    private int id, duracao;
-    private String descricao;
+    private int id, duracao, numeroEpisodio;
+    private String descricao, nomeSerie;
+
+    public int getDuracao() {
+        return duracao;
+    }
+
+    public int getNumeroEpisodio() {
+        return numeroEpisodio;
+    }
+
+    public void setNumeroEpisodio(int numeroEpisodio) {
+        this.numeroEpisodio = numeroEpisodio;
+    }
+
+    public String getNomeSerie() {
+        return nomeSerie;
+    }
+
+    public void setNomeSerie(String nomeSerie) {
+        this.nomeSerie = nomeSerie;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
 
     public int getId() {
         return id;

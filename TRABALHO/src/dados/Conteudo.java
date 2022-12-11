@@ -8,8 +8,8 @@ import java.util.List;
 public abstract class Conteudo {
     protected int id, ano;
     protected String titulo, genero, descricao;
-    protected List<Ator> elencoPrincipal = new ArrayList<>();
-    protected List<Ator> elencoSecundario = new ArrayList<>();
+    protected List<Ator> elencoPrincipal = new ArrayList<>(); //tirar
+    protected List<Ator> elencoSecundario = new ArrayList<>(); //tirar
     protected byte[] capa;
 
     public Icon getCapa() {
@@ -19,6 +19,10 @@ public abstract class Conteudo {
         Image img = icon.getImage().getScaledInstance(200, 300, Image.SCALE_SMOOTH);
         Icon fim = new ImageIcon(img);
         return fim;
+    }
+
+    public byte[] getCapaBytes(){
+        return this.capa;
     }
 
     public void setCapa(byte[] capa) {
@@ -31,7 +35,7 @@ public abstract class Conteudo {
         this.ano = a;
         this.genero = gen;
     }
-
+    public Conteudo(){}
     public void setId(int id) {
         this.id = id;
     }
@@ -58,6 +62,34 @@ public abstract class Conteudo {
 
     public List<Ator> getElencoSecundario() {
         return elencoSecundario;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getAno() {
+        return ano;
+    }
+
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public String getElenco1() {

@@ -12,6 +12,15 @@ public class Serie extends Conteudo {
         this.temporada = tempo;
     }
 
+    public int getTemporada() {
+        return temporada;
+    }
+
+    public void setTemporada(int temporada) {
+        this.temporada = temporada;
+    }
+
+    public Serie(){}
     public Episodio getEpisodio(int id) {
         Episodio e = new Episodio();
         for (Episodio it : episodios)

@@ -23,18 +23,14 @@ public class UsuarioDAO {
 
     private UsuarioDAO() {
         Connection connection = DataBaseConnection.getConnection();
-        try {
-            selectUsuario = connection.prepareStatement("select * from Usuario");
-            insertUsuario = connection.prepareStatement("insert into Usuario (usuarioID, dataNascimento, nome, senha) values (?,?,?,?)");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     public Usuario carregar(int code) {
         ResultSet resultSet;
         Usuario usuario = null;
+        String query = "select * from Usuario";
         try {
+            PreparedStatement selectUsuario = connection.prepareStatement(query);
             selectUsuario.setInt(1, code);
             resultSet = selectUsuario.executeQuery();
             if (resultSet.next()) {
@@ -52,8 +48,9 @@ public class UsuarioDAO {
 
     public List<Usuario> listar() throws SQLException {
         List<Usuario> usuarios = new ArrayList<>();
+        String query ="SELECT * FROM usuario";
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM usuario");
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Usuario usuario = new Usuario();

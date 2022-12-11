@@ -6,8 +6,8 @@ import java.util.List;
 public class Usuario {
     private int id;
     private String dataNascimento, nome, senha;
-    private List<Conteudo> filmes = new ArrayList<>();
-    private List<Conteudo> series = new ArrayList<>();
+    private List<Conteudo> filmes = new ArrayList<>(); //tirar
+    private List<Conteudo> series = new ArrayList<>(); //tirar
 
     public List<Conteudo> getFilmes() {
         return filmes;
