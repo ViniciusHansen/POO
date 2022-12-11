@@ -1,7 +1,9 @@
 package persistencia;
 
 
+import dados.Conteudo;
 import dados.Filme;
+import dados.Usuario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -42,6 +44,7 @@ public class FilmeDAO {
                 filme.setGenero(resultSet.getString("genero"));
                 filme.setDescricao(resultSet.getString("descricao"));
                 filme.setCapa(resultSet.getBytes("capa"));
+                filme.setUsuarioID(resultSet.getInt("usuarioID"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -49,11 +52,12 @@ public class FilmeDAO {
         return filme;
     }
 
-    public List<Filme> listar() throws SQLException {
-        List<Filme> filmes = new ArrayList<>();
-        String query = "SELECT * FROM filme";
+    public List<Conteudo> listar(Usuario usuario) throws SQLException {
+        List<Conteudo> filmes = new ArrayList<>();
+        String query = "SELECT * FROM filme WHERE usuarioID=?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1,usuario.getId());
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Filme filme = new Filme();
@@ -72,8 +76,8 @@ public class FilmeDAO {
         return filmes;
     }
 
-    public void inserir(Filme filme) throws SQLException {
-        String query = "INSERT INTO filme(titulo, ano, duracao, genero, descricao, capa) VALUES(?,?,?,?,?,?)";
+    public void inserir(Usuario usuario, Filme filme) throws SQLException {
+        String query = "INSERT INTO filme(titulo, ano, duracao, genero, descricao, capa, usuario_id) VALUES(?,?,?,?,?,?,?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1,filme.getTitulo());
@@ -82,14 +86,15 @@ public class FilmeDAO {
             preparedStatement.setString(4, filme.getGenero());
             preparedStatement.setString(5, filme.getDescricao());
             preparedStatement.setBytes(6,filme.getCapaBytes());
+            preparedStatement.setInt(7,usuario.getId());
             preparedStatement.execute();
         } catch (SQLException e) {
             throw new SQLException("Erro ao inserir Filme no Banco de Dados");
         }
     }
 
-    public void alterar(Filme filme) throws SQLException {
-        String query = "UPDATE filme SET titulo=?, ano=?, duracao=?, genero=?, descricao=?, capa=? WHERE filmeID=?";
+    public void alterar(Usuario usuario, Filme filme) throws SQLException {
+        String query = "UPDATE filme SET titulo=?, ano=?, duracao=?, genero=?, descricao=?, capa=?, usuario_id=? WHERE filmeID=?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1,filme.getTitulo());
@@ -98,6 +103,7 @@ public class FilmeDAO {
             preparedStatement.setString(4, filme.getGenero());
             preparedStatement.setString(5, filme.getDescricao());
             preparedStatement.setBytes(6,filme.getCapaBytes());
+            preparedStatement.setInt(7,usuario.getId());
             preparedStatement.execute();
         } catch (SQLException e) {
             throw new SQLException("Erro ao atualizar o Filme no Banco de Dados");

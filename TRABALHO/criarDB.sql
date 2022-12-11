@@ -16,7 +16,8 @@ create table Filme(
     genero varchar(32),
     descricao varchar(100),
     capa bytea,
-    primary key (FilmeID)
+    primary key (FilmeID),
+    foreign key (UsuarioID) references Usuario (UsuarioID) ON DELETE CASCADE
 );
 create sequence FilmeID;
 
@@ -29,18 +30,19 @@ create table Serie(
     genero varchar(32),
     descricao varchar(100),
     capa bytea,
-    primary key (SerieID)
+    primary key (SerieID),
+    foreign key (UsuarioID) references Usuario (UsuarioID) ON DELETE CASCADE
 );
 create sequence SerieID;
 
 
 create table Episodio(
     EpisodioID int,
-    nome_serie varchar(32),
     numero_episodio int,
     duracao int,
     descricao varchar(100),
-    primary key (EpisodioID)
+    primary key (EpisodioID),
+    foreign key (SerieID) references Serie (SerieID) ON DELETE CASCADE
 );
 create sequence EpisodioID;
 
@@ -54,24 +56,6 @@ create table Ator(
 );
 create sequence AtorID;
 
-
-create table Filme_Usuario(
-    FilmeID int references Filme (FilmeID) ON DELETE CASCADE,
-    UsuarioID int references Usuario (UsuarioID) ON DELETE CASCADE,
-    CONSTRAINT Filme_Usuario_PK primary key (FilmeID, UsuarioID)
-);
-
-create table Episodio_Serie(
-    EpisodioID int references Episodio (EpisodioID) ON DELETE CASCADE,
-    SerieID int references Serie (SerieID) ON DELETE CASCADE,
-    CONSTRAINT Episodio_Serie_PK primary key (EpisodioID, SerieID)
-);
-
-create table Serie_Usuario(
-    SerieID int references Serie (SerieID) ON DELETE CASCADE,
-    UsuarioID int references Usuario (UsuarioID) ON DELETE CASCADE,
-    CONSTRAINT Serie_Usuario_PK primary key (SerieID, UsuarioID)
-);
 
 create table Ator_Filme(
     AtorID int references Ator (AtorID) ON DELETE CASCADE,

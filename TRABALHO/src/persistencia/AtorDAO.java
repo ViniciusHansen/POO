@@ -11,8 +11,6 @@ import java.util.List;
 
 public class AtorDAO {
     private static AtorDAO instance = null;
-    private PreparedStatement selectAtor;
-    private PreparedStatement insertAtor;
     private Connection connection;
 
     public static AtorDAO getInstance() {
@@ -22,7 +20,7 @@ public class AtorDAO {
     }
 
     private AtorDAO() {
-        Connection connection = DataBaseConnection.getConnection();
+        this.connection = DataBaseConnection.getConnection();
     }
 
     public Ator carregar(int code) {

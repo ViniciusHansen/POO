@@ -1,7 +1,9 @@
 package persistencia;
 
 
+import dados.Conteudo;
 import dados.Serie;
+import dados.Usuario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -42,6 +44,7 @@ public class SerieDAO {
                 serie.setGenero(resultSet.getString("genero"));
                 serie.setDescricao(resultSet.getString("descricao"));
                 serie.setCapa(resultSet.getBytes("capa"));
+                serie.setUsuarioID(resultSet.getInt("usuarioID"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -49,11 +52,12 @@ public class SerieDAO {
         return serie;
     }
 
-    public List<Serie> listar() throws SQLException {
-        List<Serie> series = new ArrayList<>();
-        String query = "SELECT * FROM serie";
+    public List<Conteudo> listar(Usuario usuario) throws SQLException {
+        List<Conteudo> series = new ArrayList<>();
+        String query = "SELECT * FROM serie WHERE usuarioID=?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1,usuario.getId());
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Serie serie = new Serie();
@@ -64,6 +68,7 @@ public class SerieDAO {
                 serie.setGenero(resultSet.getString("genero"));
                 serie.setDescricao(resultSet.getString("descricao"));
                 serie.setCapa(resultSet.getBytes("capa"));
+                serie.setUsuarioID(resultSet.getInt("usuarioID"));
                 series.add(serie);
             }
         } catch (SQLException e) {
@@ -72,8 +77,8 @@ public class SerieDAO {
         return series;
     }
 
-    public void inserir(Serie serie) throws SQLException {
-        String query = "INSERT INTO serie(titulo, ano, temporada, genero, descricao, capa) VALUES(?,?,?,?,?,?)";
+    public void inserir(Usuario usuario, Serie serie) throws SQLException {
+        String query = "INSERT INTO serie(titulo, ano, temporada, genero, descricao, capa, usuarioID) VALUES(?,?,?,?,?,?,?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1,serie.getTitulo());
@@ -82,14 +87,15 @@ public class SerieDAO {
             preparedStatement.setString(4, serie.getGenero());
             preparedStatement.setString(5, serie.getDescricao());
             preparedStatement.setBytes(6,serie.getCapaBytes());
+            preparedStatement.setInt(7,usuario.getId());
             preparedStatement.execute();
         } catch (SQLException e) {
             throw new SQLException("Erro ao inserir Serie no Banco de Dados");
         }
     }
 
-    public void alterar(Serie serie) throws SQLException {
-        String query = "UPDATE serie SET titulo=?, ano=?, temporada=?, genero=?, descricao=?, capa=? WHERE serieID=?";
+    public void alterar(Usuario usuario, Serie serie) throws SQLException {
+        String query = "UPDATE serie SET titulo=?, ano=?, temporada=?, genero=?, descricao=?, capa=?, usuarioID=? WHERE serieID=?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1,serie.getTitulo());
@@ -98,6 +104,7 @@ public class SerieDAO {
             preparedStatement.setString(4, serie.getGenero());
             preparedStatement.setString(5, serie.getDescricao());
             preparedStatement.setBytes(6,serie.getCapaBytes());
+            preparedStatement.setInt(7,usuario.getId());
             preparedStatement.execute();
         } catch (SQLException e) {
             throw new SQLException("Erro ao atualizar o Serie no Banco de Dados");

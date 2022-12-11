@@ -8,6 +8,7 @@ public class Filme extends Conteudo {
         this.duracao = dur;
     }
 
+
     public Filme(){}
     public int getDuracao() {
         return duracao;

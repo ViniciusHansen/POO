@@ -34,7 +34,7 @@ public class EpisodioDAO {
             if (resultSet.next()) {
                 episodio = new Episodio();
                 episodio.setId(resultSet.getInt("episodioID"));
-                episodio.setNomeSerie(resultSet.getString("nome_serie"));
+                episodio.setSerieID(resultSet.getInt("serieID"));
                 episodio.setNumeroEpisodio(resultSet.getInt("numero_episodio"));
                 episodio.setDuracao((resultSet.getInt("duracao")));
                 episodio.setDescricao(resultSet.getString("descricao"));
@@ -54,7 +54,7 @@ public class EpisodioDAO {
             while (resultSet.next()) {
                 Episodio episodio = new Episodio();
                 episodio.setId(resultSet.getInt("episodioID"));
-                episodio.setNomeSerie(resultSet.getString("nome_serie"));
+                episodio.setSerieID(resultSet.getInt("serieID"));
                 episodio.setNumeroEpisodio(resultSet.getInt("numero_episodio"));
                 episodio.setDuracao((resultSet.getInt("duracao")));
                 episodio.setDescricao(resultSet.getString("descricao"));
@@ -67,10 +67,10 @@ public class EpisodioDAO {
     }
 
     public void inserir(Episodio episodio) throws SQLException {
-        String query = "INSERT INTO episodio(nome_serie, numero_episodio, duracao, descricao) VALUES(?,?,?,?)";
+        String query = "INSERT INTO episodio(serieID, numero_episodio, duracao, descricao) VALUES(?,?,?,?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, episodio.getNomeSerie());
+            preparedStatement.setInt(1, episodio.getSerieID());
             preparedStatement.setInt(2,episodio.getNumeroEpisodio());
             preparedStatement.setInt(3, episodio.getDuracao());
             preparedStatement.setString(4, episodio.getDescricao());
@@ -81,10 +81,10 @@ public class EpisodioDAO {
     }
 
     public void alterar(Episodio episodio) throws SQLException {
-        String query = "UPDATE episodio SET nome_serie=?, numero_episodio=?, duracao=?, descricao=? WHERE episodioId=?";
+        String query = "UPDATE episodio SET serieID=?, numero_episodio=?, duracao=?, descricao=? WHERE episodioId=?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, episodio.getNomeSerie());
+            preparedStatement.setInt(1, episodio.getSerieID());
             preparedStatement.setInt(2,episodio.getNumeroEpisodio());
             preparedStatement.setInt(3, episodio.getDuracao());
             preparedStatement.setString(4, episodio.getDescricao());
