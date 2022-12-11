@@ -22,7 +22,20 @@ public class UsuarioDAO {
     }
 
     private UsuarioDAO() {
-        Connection connection = DataBaseConnection.getConnection();
+        this.connection = DataBaseConnection.getConnection();
+    }
+
+    public int selectNextID() throws SQLException {
+        String query = "SELECT nexval('usuarioID')";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        try{
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next())
+                return resultSet.getInt(1);
+        } catch (SQLException e) {
+            throw new SQLException("Erro ao achar o próximo ID no banco");
+        }
+        return 0;
     }
 
     public Usuario carregar(int code) {
@@ -67,13 +80,14 @@ public class UsuarioDAO {
     }
 
     public void inserir(Usuario usuario) throws SQLException {
-        String query = "INSERT INTO usuario(nome, senha, dataNascimento) VALUES(?,?,?)";
+        String query = "INSERT INTO Usuario (usuarioID, nome, senha, dataNascimento) VALUES(?,?,?,?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, usuario.getNome());
-            preparedStatement.setString(2, usuario.getSenha());
-            preparedStatement.setString(3, usuario.getDataNascimento());
-            preparedStatement.execute();
+            preparedStatement.setInt(1,this.selectNextID());
+            preparedStatement.setString(2, usuario.getNome());
+            preparedStatement.setString(3, usuario.getSenha());
+            preparedStatement.setString(4, usuario.getDataNascimento());
+            preparedStatement.executeQuery();
         } catch (SQLException e) {
             throw new SQLException("Erro ao inserir Usuario no Banco de Dados");
         }
@@ -103,4 +117,5 @@ public class UsuarioDAO {
             throw new SQLException("Erro ao deletar o Usuario no Banco de Dados");
         }
     }
+
 }

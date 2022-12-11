@@ -48,7 +48,6 @@ public class Login extends JFrame {
                     sist.criaUsuario(login, senha, nasc);
                 } catch (SQLException ex) {
                     ex.printStackTrace();
-
                 }
                 contaCriada.setVisible(true);
             }
