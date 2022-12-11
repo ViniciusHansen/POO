@@ -14,7 +14,7 @@ create table Filme(
     duracao int,
     titulo varchar(32),
     genero varchar(32),
-    descricao varchar(32),
+    descricao varchar(100),
     capa bytea,
     primary key (FilmeID)
 );
@@ -25,9 +25,9 @@ create table Serie(
     SerieID int,
     ano int,
     temporada int,
-    episodios titulo varchar(32),
+    titulo varchar(32),
     genero varchar(32),
-    descricao varchar(32),
+    descricao varchar(100),
     capa bytea,
     primary key (SerieID)
 );
