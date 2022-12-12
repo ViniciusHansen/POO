@@ -31,8 +31,9 @@ public class Ator_FilmeDAO {
             preparedStatement.setInt(2,filme.getId());
             preparedStatement.setBoolean(3,true);
             preparedStatement.setBoolean(4, false);
-            preparedStatement.executeUpdate();
+            preparedStatement.execute();
         }catch (SQLException e){
+            e.printStackTrace();
             throw new SQLException("Erro ao associar Filme e Ator");
         }
     }
@@ -46,6 +47,7 @@ public class Ator_FilmeDAO {
             preparedStatement.setBoolean(4, true);
             preparedStatement.executeUpdate();
         }catch (SQLException e){
+            e.printStackTrace();
             throw new SQLException("Erro ao associar Filme e Ator");
         }
     }
@@ -54,6 +56,7 @@ public class Ator_FilmeDAO {
         List<Ator> elencoPrincipal = new ArrayList<>();
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, filme.getId());
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()){
                 Ator ator = new Ator();
@@ -64,6 +67,7 @@ public class Ator_FilmeDAO {
                 elencoPrincipal.add(ator);
             }
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new SQLException("Erro ao exibir elenco");
         }
         return elencoPrincipal;
@@ -73,6 +77,7 @@ public class Ator_FilmeDAO {
         List<Ator> elencoSecundario = new ArrayList<>();
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, filme.getId());
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()){
                 Ator ator = new Ator();
@@ -83,6 +88,7 @@ public class Ator_FilmeDAO {
                 elencoSecundario.add(ator);
             }
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new SQLException("Erro ao exibir elenco");
         }
         return elencoSecundario;

@@ -1,8 +1,12 @@
 package apresentacao;
 
 import dados.Conteudo;
+import dados.Filme;
+import dados.Serie;
 import dados.Usuario;
 import negocio.Sistema;
+import persistencia.FilmeDAO;
+import persistencia.SerieDAO;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -53,19 +57,24 @@ public class TelaPrincipal extends JFrame {
         ConteudoList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                Conteudo procurado = null;
                 try {
-                    for (Conteudo c : sist.getAllConteudo(user))
-                        if (c.getTitulo() == ConteudoList.getSelectedValue()) {
-                            procurado = c;
+                    for (Conteudo c : sist.getAllConteudo(user)) {
+                        if (c.getTitulo().equals(ConteudoList.getSelectedValue())) {
+                            if (c instanceof Filme) {
+                                Filme filme = FilmeDAO.getInstance().carregar(c.getId());
+                                new ConteudoDesc(filme, sist, user);
+                            }
+                            else{
+                                Serie serie = SerieDAO.getInstance().carregar(c.getId());
+                                new ConteudoDesc(serie, sist, user);
+                            }
+                            dispose();
                             break;
                         }
+                    }
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
-                assert procurado != null;
-                ConteudoDesc desc = new ConteudoDesc(procurado, sist, user);
-                dispose();
             }
         });
         logOutButton.addActionListener(new ActionListener() {

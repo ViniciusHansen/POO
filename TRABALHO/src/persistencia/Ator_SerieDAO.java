@@ -14,6 +14,7 @@ import java.util.List;
 public class Ator_SerieDAO {
     private static Ator_SerieDAO instance = null;
     private Connection connection;
+    private final SerieDAO serieDAO = SerieDAO.getInstance();
 
     public static Ator_SerieDAO getInstance() {
         if (instance == null)
@@ -33,6 +34,7 @@ public class Ator_SerieDAO {
             preparedStatement.setBoolean(4, false);
             preparedStatement.executeUpdate();
         }catch (SQLException e){
+            e.printStackTrace();
             throw new SQLException("Erro ao associar Serie e Ator");
         }
     }
@@ -46,6 +48,7 @@ public class Ator_SerieDAO {
             preparedStatement.setBoolean(4, true);
             preparedStatement.executeUpdate();
         }catch (SQLException e){
+            e.printStackTrace();
             throw new SQLException("Erro ao associar Serie e Ator");
         }
     }
@@ -54,6 +57,7 @@ public class Ator_SerieDAO {
         List<Ator> elencoPrincipal = new ArrayList<>();
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1,serie.getId());
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()){
                 Ator ator = new Ator();
@@ -73,6 +77,7 @@ public class Ator_SerieDAO {
         List<Ator> elencoSecundario = new ArrayList<>();
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1,serie.getId());
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()){
                 Ator ator = new Ator();
@@ -83,6 +88,7 @@ public class Ator_SerieDAO {
                 elencoSecundario.add(ator);
             }
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new SQLException("Erro ao exibir elenco");
         }
         return elencoSecundario;

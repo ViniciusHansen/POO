@@ -1,7 +1,10 @@
 package dados;
 
+import negocio.Sistema;
+
 import javax.swing.*;
 import java.awt.*;
+import java.sql.SQLException;
 
 public abstract class Conteudo {
     protected int id;
@@ -85,5 +88,14 @@ public abstract class Conteudo {
         this.descricao = descricao;
     }
 
-
+    @Override
+    public String toString() {
+       Sistema sistema = new Sistema();
+        try {
+            return sistema.descricaoString(this);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
 }

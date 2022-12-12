@@ -5,6 +5,8 @@ import dados.Filme;
 import dados.Serie;
 import dados.Usuario;
 import negocio.Sistema;
+import persistencia.FilmeDAO;
+import persistencia.SerieDAO;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -30,7 +32,7 @@ public class ConteudoDesc extends JFrame {
     private Sistema sist;
     private Usuario user;
 
-    public ConteudoDesc(Conteudo c, Sistema s, Usuario u) {
+    public ConteudoDesc(Conteudo c, Sistema s, Usuario u) throws SQLException {
         setContentPane(ConteudoDesc);
         setTitle(c.getTitulo());
         setSize(600, 400);
@@ -50,7 +52,7 @@ public class ConteudoDesc extends JFrame {
 
         sist = s;
         user = u;
-        infoTextArea.setText(c.toString());
+        infoTextArea.setText(sist.descricaoString(c));
         excluirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -123,10 +125,14 @@ public class ConteudoDesc extends JFrame {
                 try {
                     byte[] capa = Files.readAllBytes(arquivo.toPath());
                     c.setCapa(capa);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
+                    if (c instanceof Filme)
+                        FilmeDAO.getInstance().alterar((Filme) c);
+                    else
+                        SerieDAO.getInstance().alterar((Serie) c);
+                    new ConteudoDesc(c, sist, user);
+                } catch (IOException | SQLException ex) {
+                    ex.printStackTrace();
                 }
-                ConteudoDesc atualzia = new ConteudoDesc(c, sist, user);
                 dispose();
             }
         });

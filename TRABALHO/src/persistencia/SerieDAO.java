@@ -27,10 +27,23 @@ public class SerieDAO {
         this.connection = DataBaseConnection.getConnection();
     }
 
+    public int selectNextID() throws SQLException {
+        String query = "select nextval('serieID');";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        try{
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next())
+                return resultSet.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            //throw new SQLException("Erro ao achar o próximo ID no banco");
+        }
+        return 0;
+    }
     public Serie carregar(int code) {
         ResultSet resultSet;
         Serie serie = null;
-        String query = "select * from serie";
+        String query = "select * from serie WHERE serieID=?";
         try {
             PreparedStatement selectSerie = connection.prepareStatement(query);
             selectSerie.setInt(1, code);
@@ -54,14 +67,14 @@ public class SerieDAO {
 
     public List<Conteudo> listar(Usuario usuario) throws SQLException {
         List<Conteudo> series = new ArrayList<>();
-        String query = "SELECT * FROM serie WHERE usuarioID=?";
+        String query = "SELECT * FROM serie WHERE usuarioID=?;";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1,usuario.getId());
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Serie serie = new Serie();
-                serie.setId(resultSet.getInt("SerieID"));
+                serie.setId(resultSet.getInt("serieID"));
                 serie.setAno(resultSet.getInt("ano"));
                 serie.setTemporada(resultSet.getInt("temporada"));
                 serie.setTitulo(resultSet.getString("titulo"));
@@ -78,23 +91,24 @@ public class SerieDAO {
     }
 
     public void inserir(Usuario usuario, Serie serie) throws SQLException {
-        String query = "INSERT INTO serie(titulo, ano, temporada, genero, descricao, capa, usuarioID) VALUES(?,?,?,?,?,?,?)";
+        String query = "INSERT INTO serie(serieID, titulo, ano, temporada, genero, descricao, capa, usuarioID) VALUES(?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1,serie.getTitulo());
-            preparedStatement.setInt(2, serie.getAno());
-            preparedStatement.setInt(3, serie.getTemporada());
-            preparedStatement.setString(4, serie.getGenero());
-            preparedStatement.setString(5, serie.getDescricao());
-            preparedStatement.setBytes(6,serie.getCapaBytes());
-            preparedStatement.setInt(7,usuario.getId());
+            preparedStatement.setInt(1,this.selectNextID());
+            preparedStatement.setString(2,serie.getTitulo());
+            preparedStatement.setInt(3, serie.getAno());
+            preparedStatement.setInt(4, serie.getTemporada());
+            preparedStatement.setString(5, serie.getGenero());
+            preparedStatement.setString(6, serie.getDescricao());
+            preparedStatement.setBytes(7,serie.getCapaBytes());
+            preparedStatement.setInt(8,usuario.getId());
             preparedStatement.execute();
         } catch (SQLException e) {
             throw new SQLException("Erro ao inserir Serie no Banco de Dados");
         }
     }
 
-    public void alterar(Usuario usuario, Serie serie) throws SQLException {
+    public void alterar(Serie serie) throws SQLException {
         String query = "UPDATE serie SET titulo=?, ano=?, temporada=?, genero=?, descricao=?, capa=?, usuarioID=? WHERE serieID=?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -104,7 +118,8 @@ public class SerieDAO {
             preparedStatement.setString(4, serie.getGenero());
             preparedStatement.setString(5, serie.getDescricao());
             preparedStatement.setBytes(6,serie.getCapaBytes());
-            preparedStatement.setInt(7,usuario.getId());
+            preparedStatement.setInt(7,serie.getUsuarioID());
+            preparedStatement.setInt(8,serie.getId());
             preparedStatement.execute();
         } catch (SQLException e) {
             throw new SQLException("Erro ao atualizar o Serie no Banco de Dados");

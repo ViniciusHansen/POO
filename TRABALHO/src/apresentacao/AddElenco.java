@@ -5,6 +5,7 @@ import dados.Conteudo;
 import dados.Filme;
 import dados.Usuario;
 import negocio.Sistema;
+import persistencia.FilmeDAO;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -40,7 +41,11 @@ public class AddElenco extends JFrame {
         voltarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ConteudoDesc volta = new ConteudoDesc(cont, sist, user);
+                try {
+                    ConteudoDesc volta = new ConteudoDesc(cont, sist, user);
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
                 dispose();
             }
         });

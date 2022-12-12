@@ -24,6 +24,19 @@ public class EpisodioDAO {
         this.connection = DataBaseConnection.getConnection();
     }
 
+    public int selectNextID() throws SQLException {
+        String query = "select nextval('episodioID');";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        try{
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next())
+                return resultSet.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            //throw new SQLException("Erro ao achar o próximo ID no banco");
+        }
+        return 0;
+    }
     public Episodio carregar(int code) {
         ResultSet resultSet;
         Episodio episodio = null;
@@ -91,13 +104,14 @@ public class EpisodioDAO {
     }
 
     public void inserir(Episodio episodio, Serie serie) throws SQLException {
-        String query = "INSERT INTO episodio(serieID, numero_episodio, duracao, descricao) VALUES(?,?,?,?)";
+        String query = "INSERT INTO episodio(episodioID, serieID, numero_episodio, duracao, descricao) VALUES(?,?,?,?,?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, serie.getId());
-            preparedStatement.setInt(2,episodio.getNumeroEpisodio());
-            preparedStatement.setInt(3, episodio.getDuracao());
-            preparedStatement.setString(4, episodio.getDescricao());
+            preparedStatement.setInt(1,this.selectNextID());
+            preparedStatement.setInt(2, serie.getId());
+            preparedStatement.setInt(3,episodio.getNumeroEpisodio());
+            preparedStatement.setInt(4, episodio.getDuracao());
+            preparedStatement.setString(5, episodio.getDescricao());
             preparedStatement.execute();
         } catch (SQLException e) {
             throw new SQLException("Erro ao inserir Episodio no Banco de Dados");

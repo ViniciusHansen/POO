@@ -23,6 +23,20 @@ public class AtorDAO {
         this.connection = DataBaseConnection.getConnection();
     }
 
+    public int selectNextID() throws SQLException {
+        String query = "select nextval('filmeID');";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        try {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next())
+                return resultSet.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new SQLException("Erro ao achar o próximo ID no banco");
+        }
+        return 0;
+    }
+
     public Ator carregar(int code) {
         ResultSet resultSet;
         Ator ator = null;
@@ -65,14 +79,16 @@ public class AtorDAO {
     }
 
     public void inserir(Ator ator) throws SQLException {
-        String query = "INSERT INTO ator(nome, dataNascimento, sexo) VALUES(?,?,?)";
+        String query = "INSERT INTO ator(atorID, nome, dataNascimento, sexo) VALUES(?,?,?,?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, ator.getNome());
-            preparedStatement.setString(2, ator.getDataNascimento());
-            preparedStatement.setString(3, ator.getSexo());
+            preparedStatement.setInt(1,this.selectNextID());
+            preparedStatement.setString(2, ator.getNome());
+            preparedStatement.setString(3, ator.getDataNascimento());
+            preparedStatement.setString(4, ator.getSexo());
             preparedStatement.execute();
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new SQLException("Erro ao inserir Ator no Banco de Dados");
         }
     }

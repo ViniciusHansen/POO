@@ -14,6 +14,7 @@ public class Sistema {
     private EpisodioDAO episodioDAO = EpisodioDAO.getInstance();
     private Ator_FilmeDAO atorFilmeDAO = Ator_FilmeDAO.getInstance();
     private Ator_SerieDAO atorSerieDAO = Ator_SerieDAO.getInstance();
+    private AtorDAO atorDAO = AtorDAO.getInstance();
 
     public void criaUsuario(String login, String senha, String nasc) throws SQLException {
         Usuario u = new Usuario();
@@ -84,6 +85,7 @@ public class Sistema {
     }
 
     public void addToElencoPrincipal(Conteudo conteudo, Ator ator) throws SQLException {
+        atorDAO.inserir(ator);
         if (conteudo instanceof Filme)
             atorFilmeDAO.inserirElencoPrincipal(ator, (Filme) conteudo);
         else
@@ -91,6 +93,7 @@ public class Sistema {
     }
 
     public void addToElencoSecundario(Conteudo conteudo, Ator ator) throws SQLException {
+        atorDAO.inserir(ator);
         if (conteudo instanceof Filme)
             atorFilmeDAO.inserirElencoSecundario(ator, (Filme) conteudo);
         else
@@ -107,6 +110,9 @@ public class Sistema {
 
     public List<Conteudo> getSeries(Usuario usuario) throws SQLException {
         return serieDAO.listar(usuario);
+    }
+    public List<Conteudo> getFilmes(Usuario usuario) throws SQLException{
+        return filmeDAO.listar(usuario);
     }
 
     public List<Ator> getElencoPrincipal(Filme filme) throws SQLException {
@@ -162,16 +168,18 @@ public class Sistema {
     }
 
 
-    public String descricaoString(Serie serie) throws SQLException {
-        return String.format("• Título: %s \n• Temporada: %d  \n• Descrição: %s \n• Gênero: %s \n• Ano: %d \n\n‣ Episódios: %s \n\n‣ Elenco Principal: %s \n\n‣" +
-                        " Elenco Secundário: %s\n", serie.getTitulo(), serie.getTemporada(), serie.getDescricao(),
-                serie.getGenero(), serie.getAno(), this.getEpisodiosString(serie), this.getElencoPrincipalString(serie),
-                this.getElencoSecundarioString(serie));
-    }
-
-    public String descricaoString(Filme filme) throws SQLException {
-        return String.format("• Título: %s \n• Descrição: %s \n• Gênero: %s \n• Ano: %d \n• Duração: %d minutos \n\n‣ Elenco Principal: %s \n\n‣" +
-                        " Elenco Secundário: %s", filme.getTitulo(), filme.getDescricao(), filme.getGenero(), filme.getAno(),
-                filme.getDuracao(), this.getElencoPrincipalString(filme), this.getElencoSecundarioString(filme));
+    public String descricaoString(Conteudo conteudo) throws SQLException{
+        if(conteudo instanceof Serie){
+            Serie serie = (Serie) conteudo;
+            return String.format("• Título: %s \n• Temporada: %d  \n• Descrição: %s \n• Gênero: %s \n• Ano: %d \n\n‣ Episódios: %s \n\n‣ Elenco Principal: %s \n\n‣" +
+                            " Elenco Secundário: %s\n", serie.getTitulo(), serie.getTemporada(), serie.getDescricao(),
+                    serie.getGenero(), serie.getAno(), this.getEpisodiosString(serie), this.getElencoPrincipalString(serie),
+                    this.getElencoSecundarioString(serie));
+        }else{
+            Filme filme = (Filme) conteudo;
+            return String.format("• Título: %s \n• Descrição: %s \n• Gênero: %s \n• Ano: %d \n• Duração: %d minutos \n\n‣ Elenco Principal: %s \n\n‣" +
+                            " Elenco Secundário: %s", filme.getTitulo(), filme.getDescricao(), filme.getGenero(), filme.getAno(),
+                    filme.getDuracao(), this.getElencoPrincipalString(filme), this.getElencoSecundarioString(filme));
+        }
     }
 }

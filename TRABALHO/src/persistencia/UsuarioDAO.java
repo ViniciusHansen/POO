@@ -26,14 +26,15 @@ public class UsuarioDAO {
     }
 
     public int selectNextID() throws SQLException {
-        String query = "SELECT nexval('usuarioID')";
+        String query = "select nextval('UsuarioID');";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         try{
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next())
                 return resultSet.getInt(1);
         } catch (SQLException e) {
-            throw new SQLException("Erro ao achar o próximo ID no banco");
+            e.printStackTrace();
+            //throw new SQLException("Erro ao achar o próximo ID no banco");
         }
         return 0;
     }
@@ -41,7 +42,7 @@ public class UsuarioDAO {
     public Usuario carregar(int code) {
         ResultSet resultSet;
         Usuario usuario = null;
-        String query = "select * from Usuario";
+        String query = "select * from Usuario;";
         try {
             PreparedStatement selectUsuario = connection.prepareStatement(query);
             selectUsuario.setInt(1, code);
@@ -61,7 +62,7 @@ public class UsuarioDAO {
 
     public List<Usuario> listar() throws SQLException {
         List<Usuario> usuarios = new ArrayList<>();
-        String query ="SELECT * FROM usuario";
+        String query ="SELECT * FROM usuario;";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -80,21 +81,22 @@ public class UsuarioDAO {
     }
 
     public void inserir(Usuario usuario) throws SQLException {
-        String query = "INSERT INTO Usuario (usuarioID, nome, senha, dataNascimento) VALUES(?,?,?,?)";
+        String query = "INSERT INTO Usuario (usuarioID, nome, senha, dataNascimento) VALUES(?,?,?,?);";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1,this.selectNextID());
             preparedStatement.setString(2, usuario.getNome());
             preparedStatement.setString(3, usuario.getSenha());
             preparedStatement.setString(4, usuario.getDataNascimento());
-            preparedStatement.executeQuery();
+            preparedStatement.execute();
         } catch (SQLException e) {
-            throw new SQLException("Erro ao inserir Usuario no Banco de Dados");
+            e.printStackTrace();
+            //throw new SQLException("Erro ao inserir Usuario no Banco de Dados");
         }
     }
 
     public void alterar(Usuario usuario) throws SQLException {
-        String query = "UPDATE usuario SET nome=?, senha=?, dataNascimento=? WHERE usuarioID=?";
+        String query = "UPDATE usuario SET nome=?, senha=?, dataNascimento=? WHERE usuarioID=?;";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, usuario.getNome());
@@ -108,7 +110,7 @@ public class UsuarioDAO {
     }
 
     public void remover(Usuario usuario) throws SQLException {
-        String query = "DELETE FROM usuario WHERE usuarioID=?";
+        String query = "DELETE FROM usuario WHERE usuarioID=?;";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, usuario.getId());
