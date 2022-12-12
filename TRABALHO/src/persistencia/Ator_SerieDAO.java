@@ -53,39 +53,60 @@ public class Ator_SerieDAO {
         }
     }
     public List<Ator> exibirElencoPrincipal(Serie serie) throws SQLException{
-        String query = "SELECT * FROM ator_serie WHERE serieID=? AND elencoprimario=true";
+        String queryid = "SELECT atorID FROM ator_serie WHERE serieID=? AND elencoprimario=true";
+        String queryAtor = "SELECT * FROM ator WHERE atorID=?";
         List<Ator> elencoPrincipal = new ArrayList<>();
+        List<Integer> atoresIDs = new ArrayList<>();
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            PreparedStatement preparedStatement = connection.prepareStatement(queryid);
             preparedStatement.setInt(1,serie.getId());
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()){
-                Ator ator = new Ator();
-                ator.setId(resultSet.getInt("atorID"));
-                ator.setNome(resultSet.getString("nome"));
-                ator.setDataNascimento(resultSet.getString("dataNascimento"));
-                ator.setSexo(resultSet.getString("sexo"));
-                elencoPrincipal.add(ator);
+                atoresIDs.add(resultSet.getInt("atorID"));
+            }
+            for(int atorID : atoresIDs) {
+                PreparedStatement ator = connection.prepareStatement(queryAtor);
+                ator.setInt(1, atorID);
+                ResultSet resultado = ator.executeQuery();
+                while(resultado.next()){
+                    Ator novoAtor = new Ator();
+                    novoAtor.setId(atorID);
+                    novoAtor.setNome(resultado.getString("nome"));
+                    novoAtor.setDataNascimento(resultado.getString("dataNascimento"));
+                    novoAtor.setSexo(resultado.getString("sexo"));
+                    elencoPrincipal.add(novoAtor);
+                }
             }
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new SQLException("Erro ao exibir elenco");
         }
         return elencoPrincipal;
     }
     public List<Ator> exibirElencoSecundario(Serie serie) throws SQLException{
-        String query = "SELECT * FROM ator_serie WHERE serieID=? AND elencoSecundario=true";
+        String queryid = "SELECT atorID FROM ator_serie WHERE serieID=? AND elencosecundario=true";
+        String queryAtor = "SELECT * FROM ator WHERE atorID=?";
         List<Ator> elencoSecundario = new ArrayList<>();
+        List<Integer> atoresIDs = new ArrayList<>();
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            PreparedStatement preparedStatement = connection.prepareStatement(queryid);
             preparedStatement.setInt(1,serie.getId());
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()){
-                Ator ator = new Ator();
-                ator.setId(resultSet.getInt("atorID"));
-                ator.setNome(resultSet.getString("nome"));
-                ator.setDataNascimento(resultSet.getString("dataNascimento"));
-                ator.setSexo(resultSet.getString("sexo"));
-                elencoSecundario.add(ator);
+                atoresIDs.add(resultSet.getInt("atorID"));
+            }
+            for(int atorID : atoresIDs) {
+                PreparedStatement ator = connection.prepareStatement(queryAtor);
+                ator.setInt(1, atorID);
+                ResultSet resultado = ator.executeQuery();
+                while(resultado.next()){
+                    Ator novoAtor = new Ator();
+                    novoAtor.setId(atorID);
+                    novoAtor.setNome(resultado.getString("nome"));
+                    novoAtor.setDataNascimento(resultado.getString("dataNascimento"));
+                    novoAtor.setSexo(resultado.getString("sexo"));
+                    elencoSecundario.add(novoAtor);
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();

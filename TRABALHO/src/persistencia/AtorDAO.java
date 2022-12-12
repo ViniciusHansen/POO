@@ -40,7 +40,7 @@ public class AtorDAO {
     public Ator carregar(int code) {
         ResultSet resultSet;
         Ator ator = null;
-        String query = "select * from Ator";
+        String query = "select * from Ator WHERE atorID=?";
         try {
             PreparedStatement selectAtor = connection.prepareStatement(query);
             selectAtor.setInt(1, code);
@@ -50,7 +50,7 @@ public class AtorDAO {
                 ator.setId(resultSet.getInt("atorID"));
                 ator.setNome(resultSet.getString("nome"));
                 ator.setDataNascimento(resultSet.getString("dataNascimento"));
-                ator.setSexo((resultSet.getString("senha")));
+                ator.setSexo((resultSet.getString("sexo")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -78,11 +78,12 @@ public class AtorDAO {
         return atores;
     }
 
-    public void inserir(Ator ator) throws SQLException {
+    public int inserir(Ator ator) throws SQLException {
         String query = "INSERT INTO ator(atorID, nome, dataNascimento, sexo) VALUES(?,?,?,?)";
+        int id = this.selectNextID();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1,this.selectNextID());
+            preparedStatement.setInt(1,id);
             preparedStatement.setString(2, ator.getNome());
             preparedStatement.setString(3, ator.getDataNascimento());
             preparedStatement.setString(4, ator.getSexo());
@@ -91,6 +92,7 @@ public class AtorDAO {
             e.printStackTrace();
             throw new SQLException("Erro ao inserir Ator no Banco de Dados");
         }
+        return id;
     }
 
     public void alterar(Ator ator) throws SQLException {

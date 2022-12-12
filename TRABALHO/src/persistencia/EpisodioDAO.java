@@ -139,6 +139,7 @@ public class EpisodioDAO {
             preparedStatement.setInt(1, episodio.getId());
             preparedStatement.execute();
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new SQLException("Erro ao deletar o Episodio do Banco de Dados");
         }
     }

@@ -84,16 +84,18 @@ public class Sistema {
 
     }
 
-    public void addToElencoPrincipal(Conteudo conteudo, Ator ator) throws SQLException {
-        atorDAO.inserir(ator);
+    public void addToElencoPrincipal(Conteudo conteudo, Ator a) throws SQLException {
+        int id = atorDAO.inserir(a);
+        Ator ator = atorDAO.carregar(id);
         if (conteudo instanceof Filme)
             atorFilmeDAO.inserirElencoPrincipal(ator, (Filme) conteudo);
         else
             atorSerieDAO.inserirElencoPrincipal(ator, (Serie) conteudo);
     }
 
-    public void addToElencoSecundario(Conteudo conteudo, Ator ator) throws SQLException {
-        atorDAO.inserir(ator);
+    public void addToElencoSecundario(Conteudo conteudo, Ator a) throws SQLException {
+        int id = atorDAO.inserir(a);
+        Ator ator = atorDAO.carregar(id);
         if (conteudo instanceof Filme)
             atorFilmeDAO.inserirElencoSecundario(ator, (Filme) conteudo);
         else
