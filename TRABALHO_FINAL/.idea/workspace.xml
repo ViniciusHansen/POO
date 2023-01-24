@@ -4,30 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f22ece24-d934-41df-8611-9b73f9409ed7" name="Changes" comment="fix: trabalho finalizado">
-      <change beforePath="$PROJECT_DIR$/../TRABALHO/.classpath" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TRABALHO/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TRABALHO/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TRABALHO/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TRABALHO/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TRABALHO/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TRABALHO/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TRABALHO/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TRABALHO/.project" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TRABALHO/.settings/org.eclipse.core.resources.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TRABALHO/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TRABALHO/TRAB_pt1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../TRABALHO/TRABALHO_FINAL.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TRABALHO/src/apresentacao/AddElenco.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TRABALHO/src/apresentacao/AddElenco.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TRABALHO/src/apresentacao/ConteudoDesc.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TRABALHO/src/apresentacao/ConteudoDesc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TRABALHO/src/apresentacao/TelaPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TRABALHO/src/apresentacao/TelaPrincipal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TRABALHO/src/dados/Conteudo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TRABALHO/src/dados/Conteudo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TRABALHO/src/negocio/Sistema.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TRABALHO/src/negocio/Sistema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TRABALHO/src/persistencia/AtorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TRABALHO/src/persistencia/AtorDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TRABALHO/src/persistencia/Ator_FilmeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TRABALHO/src/persistencia/Ator_FilmeDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TRABALHO/src/persistencia/Ator_SerieDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TRABALHO/src/persistencia/Ator_SerieDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TRABALHO/src/persistencia/EpisodioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TRABALHO/src/persistencia/EpisodioDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TRABALHO/src/persistencia/FilmeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TRABALHO/src/persistencia/FilmeDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TRABALHO/src/persistencia/SerieDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TRABALHO/src/persistencia/SerieDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TRABALHO/src/persistencia/UsuarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TRABALHO/src/persistencia/UsuarioDAO.java" afterDir="false" />
-    </list>
+    <list default="true" id="f22ece24-d934-41df-8611-9b73f9409ed7" name="Changes" comment="fix: trabalho finalizado" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,18 +28,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "jdk.selected.JAVA_MODULE": "corretto-1.8",
-    "last_opened_file_path": "/home/hnz/Downloads/postgresql-42.5.1.jar",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;corretto-1.8&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/hnz/Downloads/postgresql-42.5.1.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
